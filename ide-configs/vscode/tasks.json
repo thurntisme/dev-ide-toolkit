@@ -1,0 +1,23 @@
+{
+    "version": "1.0.0",
+    "tasks": [
+        {
+            "label": "Clowdev Demo Task",
+            "type": "shell",
+            "command": "echo 'Hello from Clowdev IDE Toolkit! Current project: ${workspaceFolderBasename}'",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}

@@ -32,6 +32,7 @@
         "source.fixAll.eslint": "explicit",
         "source.organizeImports": "never"
     },
+    "editor.snippetSuggestions": "top",
     "files.eol": "\n",
     "files.insertFinalNewline": true,
     "files.simpleDialog.enable": true,
