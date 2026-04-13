@@ -1,0 +1,30 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+	// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+	// List of extensions which should be recommended for users of this workspace.
+	"recommendations": [
+		// --- Visuals & Error Handling ---
+		"usernamehw.errorlens", // Improve highlighting of errors, warnings and other language diagnostics
+		"aaron-bond.better-comments", // Improve code commenting by annotating with alert, informational, TODOs, and more
+		"shardulm94.trailing-spaces", // Highlight trailing spaces and delete them in a flash
+		// --- Intelligence & Navigation ---
+		"christian-kohler.path-intellisense", // Visual Studio Code plugin that autocompletes filenames
+		"alefragnani.Bookmarks", // Mark lines and jump to them easily
+		"Wayou.vscode-todo-highlight", // highlight TODO, FIXME and any keywords within comments
+		// --- Workflow & Productivity ---
+		"formulahendry.code-runner", // Run code snippet or code file for multiple languages
+		"EditorConfig.EditorConfig", // Helps maintain consistent coding styles for multiple developers working on the same project
+		"mikestead.dotenv", // Support for .env file syntax
+		"stkb.rewrap", // Re-wrap multiple lines of comments to a given length (Alt+Q)
+		// --- Git Integration ---
+		"eamodio.gitlens", // Supercharge Git within VS Code (blame, code lens, etc.)
+		"mhutchie.git-graph", // View a Git Graph of your repository, and perform Git actions from the graph
+		// --- Advanced Tools (Highly Recommended for your setup) ---
+		"tamasfe.even-better-toml", // Fully-featured TOML support (essential for modern config files)
+		"mreetz.file-resizer", // Quickly resize images directly from the sidebar (great for web assets)
+		"mosapride.zenkaku", // Highlighting "Zenkaku" space (invisible double-byte spaces that break code)
+		"wix.vscode-import-cost" // Display the size of the imported package inline
+	],
+	// List of extensions recommended by Antigravity that should not be recommended for users of this workspace.
+	"unwantedRecommendations": []
+}
