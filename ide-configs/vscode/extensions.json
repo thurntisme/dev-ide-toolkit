@@ -23,7 +23,23 @@
 		"tamasfe.even-better-toml", // Fully-featured TOML support (essential for modern config files)
 		"mreetz.file-resizer", // Quickly resize images directly from the sidebar (great for web assets)
 		"mosapride.zenkaku", // Highlighting "Zenkaku" space (invisible double-byte spaces that break code)
-		"wix.vscode-import-cost" // Display the size of the imported package inline
+		"wix.vscode-import-cost", // Display the size of the imported package inline
+		// --- AI & Code Assistance --- (Optional)
+		"streetsidesoftware.code-spell-checker",
+		"AMiner.codegeex",
+		"GitHub.copilot-chat",
+		"sst-dev.opencode",
+		"fedaykindev.openchamber",
+		"Codium.codium",
+		"Continue.continue",
+		"Blackboxapp.blackbox",
+		"qwenlm.qwen-code-vscode-ide-companion",
+		"tabnine.tabnine-vscode",
+		"codeium.codeium",
+		"aquilalabs.superflex",
+		"Kombai.kombai",
+		"saoudrizwan.claude-dev",
+		"phind.phind"
 	],
 	// List of extensions recommended by Antigravity that should not be recommended for users of this workspace.
 	"unwantedRecommendations": []
