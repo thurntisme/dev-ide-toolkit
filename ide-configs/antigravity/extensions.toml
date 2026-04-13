@@ -1,0 +1,23 @@
+[extensions]
+recommend = [
+    "rust-analyzer",
+    "clangd",
+    "codelldb",
+    "black",
+    "ruff",
+    "prettier",
+    "eslint",
+    "tailwindcss",
+    "gitlens",
+    "errorlens",
+    "import-cost",
+    "path-alias",
+    "error-marker",
+    "crates"
+]
+
+[settings]
+rust = { edition = "2021", clippy = true }
+python = { formatter = "black", linter = "ruff" }
+javascript = { formatter = "prettier", linter = "eslint" }
+typescript = { formatter = "prettier", linter = "eslint" }

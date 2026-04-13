@@ -1,0 +1,24 @@
+[editor]
+font_size = 14
+font_family = "JetBrains Mono, Consolas, monospace"
+tab_size = 2
+format_on_save = true
+minimap = true
+line_numbers = true
+bracket_pair_colorization = true
+
+[ui]
+theme = "dark"
+icons = "vs-seti"
+
+[terminal]
+font_size = 12
+shell = "powershell"
+
+[workspace]
+auto_import = true
+enable_snippets = true
+
+[lsp]
+rust_analyzer = { proc_macro = true }
+pyright = { type_check_mode = "basic" }

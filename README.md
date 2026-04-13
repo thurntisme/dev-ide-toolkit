@@ -27,28 +27,61 @@ dev-ide-toolkit/
 │   └── 📂 cloud-dev/           # Terraform, K8s manifests, AWS/GCP extensions
 │
 └── 📂 scripts/                 # Automation tools
-    ├── 📄 setup.sh             # Script to copy folders into project
+    ├── 📄 setup                # Bash script to copy configs (Linux/macOS)
+    ├── 📄 setup.ps1            # PowerShell script to copy configs (Windows)
     └── 📄 merge-json.py        # Script to merge multiple settings.json files
 ```
 
-## Usage
+## How to Use
 
-### 1. Copy config to project
-
-Run `setup.sh` to copy desired config to your project folder:
+### Option 1: Clone to Local Machine
 
 ```bash
-./scripts/setup.sh <ide> <tech-stack> <role-profile>
+git clone https://github.com/thurntisme/dev-ide-toolkit.git ~/dev-ide-toolkit
 ```
 
-Example:
+### Option 2: Use Directly in Project
+
+Copy the folder structure manually or via script to your project:
+
 ```bash
-./scripts/setup.sh vscode nextjs fe-dev
+# Linux/macOS
+./scripts/setup ~/Documents/my-project
+
+# Windows
+.\setup.ps1 C:\Projects\my-project
 ```
 
-### 2. Merge multiple settings files
+The script will prompt you to select:
+1. IDE config (vscode, cursor, kiro-zed, antigravity)
+2. Tech stack (wordpress, nextjs, laravel, nodejs)
+3. Role profile (fe-dev, be-dev, cloud-dev)
 
-Use `merge-json.py` to merge settings.json files:
+### Output Structure
+
+After running the script, your project will have:
+
+```
+my-project/
+└── vscode/              # IDE folder (vscode, cursor, kiro-zed, or antigravity)
+    ├── settings.json    # IDE config files
+    ├── keybindings.json
+    ├── extensions.json
+    ├── tech-stack/      # Tech stack config files
+    └── role-profile/    # Role profile config files
+```
+
+### Available Options
+
+| Category | Choices |
+|----------|---------|
+| IDE | vscode, cursor, kiro-zed, antigravity |
+| Tech Stack | wordpress, nextjs, laravel, nodejs |
+| Role Profile | fe-dev, be-dev, cloud-dev |
+
+## Merge JSON (Optional)
+
+Use `merge-json.py` to merge multiple settings.json files:
 
 ```bash
 python scripts/merge-json.py output.json file1.json file2.json
