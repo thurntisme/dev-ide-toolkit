@@ -1,30 +1,21 @@
-# dev-ide-toolkit
+# Antigravity IDE Agent
 
-## Project Overview
+## Project Context
 
-IDE/Editor configurations for developers. Includes settings, snippets, and rules for VS Code, Cursor, and Kiro/Zed.
+Work exclusively with Antigravity IDE. All operations should be performed within Antigravity's environment and workflow.
 
-## Directory Structure
+## Working Directory
 
 ```
-dev-ide-toolkit/
-├── ide-configs/       # Base IDE configurations
-│   ├── vscode/       # settings.json, keybindings.json
-│   ├── cursor/       # .cursorrules, AI settings
-│   └── kiro-zed/     # Zed config, keymap
-├── tech-stacks/      # Language/framework configs
-│   ├── wordpress/
-│   ├── nextjs/
-│   ├── laravel/
-│   └── nodejs/
-├── role-profiles/    # Job-specific configs
-│   ├── fe-dev/
-│   ├── be-dev/
-│   └── cloud-dev/
-└── scripts/          # Automation tools
+ai-agent/ide-index/antigravity
 ```
 
-## Available Commands (Slash Commands)
+## IDE-Specific Configuration
+
+- Config files: `.agent/workflows/`
+- Workflows directory: `.agent/workflows/`
+
+## Available Slash Commands
 
 | Command | Description |
 |---------|-------------|
@@ -35,54 +26,21 @@ dev-ide-toolkit/
 | `/code-review` | Review code quality |
 | `/git` | Git operations |
 | `/docs` | Generate documentation |
-| `/deploy` | Deploy project |
 
-## Tech Stack
+## Workflow Guidelines
 
-- TypeScript preferred where possible
-- Node.js for scripts
-- JSON/YAML for config files
+1. Always work within Antigravity IDE's workflow system
+2. Use `.agent/workflows/` for automated tasks
+3. Focus on code generation and implementation tasks
 
-## Build Commands
+## Coding Standards
 
-```bash
-# Install dependencies
-npm install
-
-# Copy configs to project
-./scripts/setup.ps1 <target-dir>
-```
-
-## Coding Conventions
-
-- Use TypeScript for new code
-- Use 2 spaces for indentation
-- Use single quotes for strings
-- Maximum line length: 100 characters
-
-## Testing
-
-- Test files: `*.test.ts` or `*.spec.ts`
-- Run: `npm test`
+- Use TypeScript where possible
+- 2 spaces for indentation
+- Single quotes for strings
+- Max line length: 100 characters
 
 ## Git Workflow
 
 - Branch naming: `feature/description`, `fix/description`
 - Commit format: `type(scope): description`
-
-## Security
-
-- No secrets in code
-- Use environment variables for sensitive data
-
----
-
-## Tool-Specific Files
-
-| IDE | Config File |
-|-----|-------------|
-| Antigravity | `.agent/workflows/`, `GEMINI.md` |
-| Cursor | `.cursor/rules/` |
-| Claude Code | `.claude/` |
-| Windsurf | `.windsurfrules` |
-| VS Code | `.vscode/` |
