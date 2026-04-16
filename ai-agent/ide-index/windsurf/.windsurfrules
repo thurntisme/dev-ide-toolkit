@@ -1,0 +1,36 @@
+# dev-ide-toolkit
+
+## Project Overview
+
+IDE/Editor configurations for developers.
+
+## Directory Structure
+
+- ide-configs/ - Base IDE configurations
+- tech-stacks/ - Language/framework configs
+- role-profiles/ - Job-specific configs
+- scripts/ - Automation tools
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| /plan | Create implementation plan |
+| /implement | Generate code from plan |
+| /test | Run and generate tests |
+| /debug | Debug and fix errors |
+| /code-review | Review code quality |
+| /git | Git operations |
+| /docs | Generate documentation |
+| /deploy | Deploy project |
+
+## Tech Stack
+
+- TypeScript preferred
+- Node.js for scripts
+- JSON/YAML for config files
+
+## Build Commands
+
+npm install
+npm run setup <target-dir>

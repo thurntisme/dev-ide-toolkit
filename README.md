@@ -6,98 +6,130 @@ IDE/Editor configurations for developers.
 
 ```
 dev-ide-toolkit/
-├── 📂 ide-configs/             # Base configurations for each IDE
-│   ├── 📂 vscode/              # settings.json (font, theme, UI), keybindings.json
-│   ├── 📂 cursor/              # .cursorrules (general AI behavior), AI settings
-│   └── 📂 kiro-zed/            # Specific config for Kiro/Zed (performance, keymap)
+├── 📂 ai-agent/              # AI Agent configurations
+│   ├── 📂 shared/           # Universal workflows, skills, rules
+│   │   ├── 📂 workflows/    # /plan, /implement, /test, /debug...
+│   │   ├── 📂 skills/      # code-gen, testing, debug, security
+│   │   └── 📂 rules/       # code-style, git-workflow, testing
+│   └── 📂 ide-index/         # IDE-specific configs
+│       ├── antigravity/     # .agent/ ready
+│       ├── cursor/          # .cursor/rules ready
+│       ├── windsurf/        # .windsurfrules ready
+│       └── claude/           # .claude/ ready
 │
-├── 📂 tech-stacks/             # Language/framework-specific configurations
-│   ├── 📂 wordpress/           
-│   │   └── 📂 .vscode/         # extensions.json (WP hooks), settings.json (PHP)
-│   ├── 📂 nextjs/              
-│   │   └── 📂 .vscode/         # settings.json (Tailwind, TS), snippets (React)
-│   ├── 📂 laravel/             
-│   │   └── 📂 .vscode/         # extensions.json (Blade), snippets (Artisan)
-│   └── 📂 nodejs/              
-│       └── 📂 .cursor/         # .cursorrules (Node/TS expert instructions)
+├── 📂 ide-configs/           # IDE general settings (VS Code, etc.)
+│   └── 📂 vscode/           # settings.json, extensions.json
 │
-├── 📂 role-profiles/           # Job-specific configurations
-│   ├── 📂 fe-dev/              # Chrome Debugger, CSS Linters, Accessibility tools
-│   ├── 📂 be-dev/              # REST Client configs, SQL/DB connectors, Docker snippets
-│   └── 📂 cloud-dev/           # Terraform, K8s manifests, AWS/GCP extensions
-│
-└── 📂 scripts/                 # Automation tools
-    ├── 📄 setup                # Bash script to copy configs (Linux/macOS)
-    ├── 📄 setup.ps1            # PowerShell script to copy configs (Windows)
-    └── 📄 merge-json.py        # Script to merge multiple settings.json files
+└── 📂 scripts/              # Setup scripts
+    ├── setup                # Linux/macOS
+    └── setup.ps1            # Windows
 ```
 
-## How to Use
+## How It Works
 
-### Option 1: Clone to Local Machine
+### 1. ai-agent/ folder
+Where to place AI agent configuration (workflows, skills, rules).
+- `shared/` - Universal source (edit once, use all IDEs)
+- `ide-index/` - Ready-to-copy configs per IDE
+
+### 2. ide-configs/ folder
+Where to place IDE general settings.
+- VS Code settings, extensions, snippets
+- Future: cursor, windsurf, etc.
+
+### 3. scripts/ folder
+Run script to setup toolkit for a new project.
+
+## AI Agent Commands
+
+### Slash Commands
+
+| Command | Description |
+|---------|-------------|
+| `/plan` | Create implementation plan |
+| `/implement` | Generate code from plan |
+| `/test` | Run and generate tests |
+| `/debug` | Debug and fix errors |
+| `/code-review` | Review code quality |
+| `/git` | Git operations |
+| `/docs` | Generate documentation |
+| `/deploy` | Deploy project |
+
+### Skills
+
+| Skill | Description |
+|-------|-------------|
+| code-gen | Code generation |
+| testing | Testing patterns |
+| debug | Debugging guide |
+| security | Security audit |
+
+## Setup for New Project
 
 ```bash
-git clone https://github.com/thurntisme/dev-ide-toolkit.git ~/dev-ide-toolkit
-```
+# Windows
+.\scripts\setup.ps1 C:\Projects\my-project
 
-### Option 2: Use Directly in Project
-
-Copy the folder structure manually or via script to your project:
-
-```bash
 # Linux/macOS
 ./scripts/setup ~/Documents/my-project
-
-# Windows
-.\setup.ps1 C:\Projects\my-project
 ```
 
-The script will prompt you to select:
-1. IDE config (vscode, cursor, kiro-zed, antigravity)
-2. Tech stack (wordpress, nextjs, laravel, nodejs)
-3. Role profile (fe-dev, be-dev, cloud-dev)
+Then select:
+1. IDE (vscode, cursor, windsurf, antigravity, claude)
+2. Tech stack (optional)
+3. Role profile (optional)
 
-### Output Structure
-
-After running the script, your project will have:
-
-```
-my-project/
-└── vscode/              # IDE folder (vscode, cursor, kiro-zed, or antigravity)
-    ├── settings.json    # IDE config files
-    ├── keybindings.json
-    ├── extensions.json
-    ├── tech-stack/      # Tech stack config files
-    └── role-profile/    # Role profile config files
-```
-
-### Available Options
-
-| Category | Choices |
-|----------|---------|
-| IDE | vscode, cursor, kiro-zed, antigravity |
-| Tech Stack | wordpress, nextjs, laravel, nodejs |
-| Role Profile | fe-dev, be-dev, cloud-dev |
-
-## Merge JSON (Optional)
-
-Use `merge-json.py` to merge multiple settings.json files:
+## Copy AI Agent Config to Project
 
 ```bash
-python scripts/merge-json.py output.json file1.json file2.json
+# For Antigravity
+cp -r ai-agent/ide-index/antigravity .agent/
+
+# For Cursor
+mkdir .cursor
+cp ai-agent/ide-index/cursor/rules/* .cursor/rules/
+
+# For Claude Code
+mkdir .claude
+cp ai-agent/ide-index/claude/CLAUDE.md .claude/
+
+# For Windsurf
+cp ai-agent/ide-index/windsurf/.windsurfrules ./
 ```
 
-## Common Keyboard Shortcuts
+Or use the setup script to automate.
 
-| Action | VS Code | Cursor | Zed |
-|--------|---------|--------|-----|
-| Command Palette | `Ctrl+Shift+P` | `Ctrl+Shift+P` | `Ctrl+Shift+P` |
-| Quick Open | `Ctrl+P` | `Ctrl+P` | `Ctrl+P` |
-| Terminal | ``Ctrl+` `` | ``Ctrl+` `` | ``Ctrl+` `` |
-| Go to Definition | `F12` | `F12` | `F12` |
-| Find in Files | `Ctrl+Shift+F` | `Ctrl+Shift+F` | `Ctrl+Shift+F` |
+## Tech Stack & Role Profiles
+
+```
+ai-agent/
+├── tech-stacks/            # Language/framework configs
+│   ├── wordpress/
+│   ├── nextjs/
+│   ├── laravel/
+│   └── nodejs/
+│
+└── role-profiles/           # Job-specific configs
+    ├── fe-dev/
+    ├── be-dev/
+    └── cloud-dev/
+```
+
+## Configuration Files
+
+| IDE | Config Location |
+|-----|-----------------|
+| VS Code | ide-configs/vscode/ |
+| Antigravity | ai-agent/ide-index/antigravity/ |
+| Cursor | ai-agent/ide-index/cursor/ |
+| Windsurf | ai-agent/ide-index/windsurf/ |
+| Claude Code | ai-agent/ide-index/claude/ |
 
 ## Requirements
 
-- Python 3.x (for merge-json.py)
 - Git (to clone/copy config)
+- Target IDE installed
+
+## License
+
+MIT
