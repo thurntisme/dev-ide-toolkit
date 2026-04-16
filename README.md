@@ -6,12 +6,12 @@ IDE/Editor configurations for developers.
 
 ```
 dev-ide-toolkit/
-├── 📂 ai-agent/              # AI Agent configurations
-│   ├── 📂 shared/           # Universal workflows, skills, rules
+├── ai-agent/              # AI Agent configurations
+│   ├── shared/           # Universal workflows, skills, rules
 │   │   ├── 📂 workflows/    # /plan, /implement, /test, /debug...
 │   │   ├── 📂 skills/      # code-gen, testing, debug, security
 │   │   └── 📂 rules/       # code-style, git-workflow, testing
-│   └── 📂 ide-index/         # IDE-specific configs
+│   └── 📂 ide-index/       # IDE-specific configs
 │       ├── antigravity/     # .agent/ ready
 │       ├── cursor/          # .cursor/rules ready
 │       ├── windsurf/        # .windsurfrules ready
@@ -40,9 +40,77 @@ Where to place IDE general settings.
 ### 3. scripts/ folder
 Run script to setup toolkit for a new project.
 
+---
+
+## How to Implement AI Agent
+
+### File Types
+
+| Type | Location | Trigger |
+|------|----------|---------|
+| **Workflow** | `ai-agent/shared/workflows/*.md` | Slash command (e.g., `/scaffold`) |
+| **Skill** | `ai-agent/shared/skills/*/SKILL.md` | Context-based |
+| **Rule** | `ai-agent/shared/rules/*.md` | Always active |
+
+### 1. Create a Workflow
+
+File: `ai-agent/shared/workflows/<name>.md`
+
+```markdown
+---
+description: Short description of what this workflow does
+---
+
+1. Step one
+2. Step two
+3. Step three
+```
+
+**Usage:** Type `/<name>` in chat.
+
+### 2. Create a Skill
+
+Folder: `ai-agent/shared/skills/<name>/SKILL.md`
+
+```markdown
+---
+name: <name>
+description: When to use this skill. Use when user asks to...
+---
+
+# Skill Guide
+
+## When to use
+- User asks for X
+- User asks for Y
+
+## Steps
+1. Do this
+2. Do that
+```
+
+**Usage:** Triggers automatically when relevant.
+
+### 3. Create a Rule
+
+File: `ai-agent/shared/rules/<name>.md`
+
+```markdown
+# Rule Name
+
+## Guidelines
+- Always do X
+- Never do Y
+- Use Z format
+```
+
+**Usage:** Always loaded in context.
+
+---
+
 ## AI Agent Commands
 
-### Slash Commands
+### Slash Commands (Workflows)
 
 | Command | Description |
 |---------|-------------|
@@ -54,6 +122,7 @@ Run script to setup toolkit for a new project.
 | `/git` | Git operations |
 | `/docs` | Generate documentation |
 | `/deploy` | Deploy project |
+| `/scaffold` | Scaffold new component/file |
 
 ### Skills
 
@@ -63,6 +132,8 @@ Run script to setup toolkit for a new project.
 | testing | Testing patterns |
 | debug | Debugging guide |
 | security | Security audit |
+
+---
 
 ## Setup for New Project
 
