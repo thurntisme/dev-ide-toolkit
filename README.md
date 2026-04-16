@@ -142,6 +142,7 @@ File: `ai-agent/shared/rules/<name>.md`
 .\scripts\setup.ps1 C:\Projects\my-project
 
 # Linux/macOS
+chmod +x scripts/setup
 ./scripts/setup ~/Documents/my-project
 ```
 

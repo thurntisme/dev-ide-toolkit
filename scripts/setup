@@ -13,6 +13,20 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 echo "=== Dev IDE Toolkit - Setup ==="
 echo ""
 
+echo "What do you want to run?"
+echo "  1) ai-agent"
+echo "  2) settings"
+echo "  3) all"
+read -p "Select option (1-3): " RUN_OPTION
+
+case $RUN_OPTION in
+    1) RUN_CHOICE="ai-agent" ;;
+    2) RUN_CHOICE="settings" ;;
+    3) RUN_CHOICE="all" ;;
+    *) echo "Invalid choice"; exit 1 ;;
+esac
+
+echo ""
 echo "Available IDEs:"
 echo "  1) vscode"
 echo "  2) cursor"
@@ -28,59 +42,27 @@ case $IDE_CHOICE in
     *) echo "Invalid choice"; exit 1 ;;
 esac
 
-echo ""
-echo "Available Tech Stacks:"
-echo "  1) wordpress"
-echo "  2) nextjs"
-echo "  3) laravel"
-echo "  4) nodejs"
-read -p "Select Tech Stack (1-4): " TECH_CHOICE
-
-case $TECH_CHOICE in
-    1) TECH_STACK="wordpress" ;;
-    2) TECH_STACK="nextjs" ;;
-    3) TECH_STACK="laravel" ;;
-    4) TECH_STACK="nodejs" ;;
-    *) echo "Invalid choice"; exit 1 ;;
-esac
-
-echo ""
-echo "Available Role Profiles:"
-echo "  1) fe-dev"
-echo "  2) be-dev"
-echo "  3) cloud-dev"
-read -p "Select Role Profile (1-3): " ROLE_CHOICE
-
-case $ROLE_CHOICE in
-    1) ROLE_PROFILE="fe-dev" ;;
-    2) ROLE_PROFILE="be-dev" ;;
-    3) ROLE_PROFILE="cloud-dev" ;;
-    *) echo "Invalid choice"; exit 1 ;;
-esac
-
-IDE_DIR="$ROOT_DIR/ide-configs/$IDE"
-TECH_STACK_DIR="$ROOT_DIR/tech-stacks/$TECH_STACK"
-ROLE_PROFILE_DIR="$ROOT_DIR/role-profiles/$ROLE_PROFILE"
 TARGET_DIR="$PROJECT_PATH/$IDE"
-
-if [[ ! -d "$IDE_DIR" ]]; then
-    echo "Error: IDE config not found: $IDE_DIR"
-    exit 1
-fi
-
-if [[ ! -d "$TECH_STACK_DIR" ]]; then
-    echo "Error: Tech stack not found: $TECH_STACK_DIR"
-    exit 1
-fi
-
-if [[ ! -d "$ROLE_PROFILE_DIR" ]]; then
-    echo "Error: Role profile not found: $ROLE_PROFILE_DIR"
-    exit 1
-fi
+IDE_CONFIG_DIR="$ROOT_DIR/ide-configs/$IDE"
+AI_AGENT_DIR="$ROOT_DIR/ai-agent/ide-index/$IDE"
 
 if [[ ! -d "$PROJECT_PATH" ]]; then
     echo "Error: Project path not found: $PROJECT_PATH"
     exit 1
+fi
+
+if [[ "$RUN_CHOICE" == "settings" ]] || [[ "$RUN_CHOICE" == "all" ]]; then
+    if [[ ! -d "$IDE_CONFIG_DIR" ]]; then
+        echo "Error: IDE config not found: $IDE_CONFIG_DIR"
+        exit 1
+    fi
+fi
+
+if [[ "$RUN_CHOICE" == "ai-agent" ]] || [[ "$RUN_CHOICE" == "all" ]]; then
+    if [[ ! -d "$AI_AGENT_DIR" ]]; then
+        echo "Error: AI agent config not found: $AI_AGENT_DIR"
+        exit 1
+    fi
 fi
 
 echo ""
@@ -88,20 +70,41 @@ echo "Copying configs to $TARGET_DIR..."
 
 mkdir -p "$TARGET_DIR"
 
-cp -r "$IDE_DIR"/* "$TARGET_DIR/"
-echo "  ✓ IDE config: $IDE"
+if [[ "$RUN_CHOICE" == "ai-agent" ]] || [[ "$RUN_CHOICE" == "all" ]]; then
+    if [[ "$IDE" == "antigravity" ]]; then
+        mkdir -p "$PROJECT_PATH/.agent"
+        cp -r "$AI_AGENT_DIR"/* "$PROJECT_PATH/.agent/"
+        cp -r "$ROOT_DIR/ai-agent/shared"/* "$PROJECT_PATH/.agent/"
+        if [[ -f "$PROJECT_PATH/.agent/AGENTS.md" ]]; then
+            mv "$PROJECT_PATH/.agent/AGENTS.md" "$PROJECT_PATH/AGENTS.md"
+        fi
+        rm -rf "$PROJECT_PATH/.agent/antigravity"
+        echo "  ✓ ai-agent (.agent)"
+    else
+        cp -r "$AI_AGENT_DIR"/* "$TARGET_DIR/"
+        echo "  ✓ ai-agent"
+    fi
+fi
 
-mkdir -p "$TARGET_DIR/tech-stack"
-cp -r "$TECH_STACK_DIR"/* "$TARGET_DIR/tech-stack/"
-echo "  ✓ Tech stack: $TECH_STACK"
+if [[ "$RUN_CHOICE" == "settings" ]] || [[ "$RUN_CHOICE" == "all" ]]; then
+    cp -r "$IDE_CONFIG_DIR"/* "$TARGET_DIR/"
+    echo "  ✓ settings"
+fi
 
-mkdir -p "$TARGET_DIR/role-profile"
-cp -r "$ROLE_PROFILE_DIR"/* "$TARGET_DIR/role-profile/"
-echo "  ✓ Role profile: $ROLE_PROFILE"
+if [[ "$IDE" == "antigravity" ]] && [[ -d "$TARGET_DIR" ]]; then
+    rm -rf "$TARGET_DIR"
+fi
 
 echo ""
 echo "Done! Project structure:"
 echo "  $TARGET_DIR/"
-echo "    ├── (IDE config files)"
-echo "    ├── tech-stack/"
-echo "    └── role-profile/"
+if [[ "$RUN_CHOICE" == "ai-agent" ]] || [[ "$RUN_CHOICE" == "all" ]]; then
+    if [[ "$IDE" == "antigravity" ]]; then
+        echo "    ├── .agent/"
+    else
+        echo "    ├── (ai-agent files)"
+    fi
+fi
+if [[ "$RUN_CHOICE" == "settings" ]] || [[ "$RUN_CHOICE" == "all" ]]; then
+    echo "    └── (IDE config files)"
+fi
