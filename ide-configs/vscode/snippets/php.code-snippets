@@ -1,0 +1,658 @@
+{
+    "PHP Opening Tag": {
+        "prefix": "dit-php-open",
+        "body": [
+            "<?php"
+        ],
+        "description": "PHP opening tag"
+    },
+    "PHP File Header": {
+        "prefix": "dit-php-header",
+        "body": [
+            "<?php",
+            "/**",
+            " * @package ${1:Package Name}",
+            " * @author ${2:Author Name}",
+            " * @link ${3:https://example.com}",
+            " * @version ${4:1.0.0}",
+            " */"
+        ],
+        "description": "PHP file header comment"
+    },
+    "Namespace": {
+        "prefix": "dit-namespace",
+        "body": [
+            "namespace ${1:Namespace}\\${2:ClassName};"
+        ],
+        "description": "PHP namespace declaration"
+    },
+    "Class": {
+        "prefix": "dit-class",
+        "body": [
+            "class ${1:ClassName}",
+            "{",
+            "    public function __construct(",
+            "        ${2:// dependencies}",
+            "    ) {",
+            "        ${3:// code}",
+            "    }",
+            "}"
+        ],
+        "description": "PHP class"
+    },
+    "Interface": {
+        "prefix": "dit-interface",
+        "body": [
+            "interface ${1:InterfaceName}",
+            "{",
+            "    ${2:// methods}",
+            "}"
+        ],
+        "description": "PHP interface"
+    },
+    "Trait": {
+        "prefix": "dit-trait",
+        "body": [
+            "trait ${1:TraitName}",
+            "{",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "PHP trait"
+    },
+    "Public Method": {
+        "prefix": "dit-public",
+        "body": [
+            "public function ${1:methodName}(${2:$param}): ${3:void}",
+            "{",
+            "    ${4:// code}",
+            "}"
+        ],
+        "description": "Public method"
+    },
+    "Private Method": {
+        "prefix": "dit-private",
+        "body": [
+            "private function ${1:methodName}(${2:$param}): ${3:void}",
+            "{",
+            "    ${4:// code}",
+            "}"
+        ],
+        "description": "Private method"
+    },
+    "Protected Method": {
+        "prefix": "dit-protected",
+        "body": [
+            "protected function ${1:methodName}(${2:$param}): ${3:void}",
+            "{",
+            "    ${4:// code}",
+            "}"
+        ],
+        "description": "Protected method"
+    },
+    "Static Method": {
+        "prefix": "dit-static",
+        "body": [
+            "public static function ${1:methodName}(${2:$param}): ${3:void}",
+            "{",
+            "    ${4:// code}",
+            "}"
+        ],
+        "description": "Static method"
+    },
+    "Constructor": {
+        "prefix": "dit-constructor",
+        "body": [
+            "public function __construct(",
+            "    ${1:public} ${2:$param}",
+            ") {",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "Constructor"
+    },
+    "Getter": {
+        "prefix": "dit-getter",
+        "body": [
+            "public function get${1:Property}(): ${2:string}",
+            "{",
+            "    return $this->${3:property};",
+            "}"
+        ],
+        "description": "Getter method"
+    },
+    "Setter": {
+        "prefix": "dit-setter",
+        "body": [
+            "public function set${1:Property}(${2:string} ${3:$property}): self",
+            "{",
+            "    $this->${3:property} = ${3:property};",
+            "    return $this;",
+            "}"
+        ],
+        "description": "Setter method with fluent return"
+    },
+    "Magic Getter": {
+        "prefix": "dit-magic-get",
+        "body": [
+            "public function __get(${1:string} $name)",
+            "{",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "Magic __get method"
+    },
+    "Magic Setter": {
+        "prefix": "dit-magic-set",
+        "body": [
+            "public function __set(${1:string} $name, ${2:mixed} $value)",
+            "{",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "Magic __set method"
+    },
+    "Magic Call": {
+        "prefix": "dit-magic-call",
+        "body": [
+            "public function __call(${1:string} $name, array $arguments)",
+            "{",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "Magic __call method"
+    },
+    "Magic Static Call": {
+        "prefix": "dit-magic-callstatic",
+        "body": [
+            "public static function __callStatic(${1:string} $name, array $arguments)",
+            "{",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "Magic __callStatic method"
+    },
+    "To String": {
+        "prefix": "dit-tostring",
+        "body": [
+            "public function __toString(): string",
+            "{",
+            "    return '${1:String representation}';",
+            "}"
+        ],
+        "description": "__toString magic method"
+    },
+    "Invoke": {
+        "prefix": "dit-invoke",
+        "body": [
+            "public function __invoke(${1:// params})",
+            "{",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "__invoke magic method"
+    },
+    "Array Map": {
+        "prefix": "dit-array-map",
+        "body": [
+            "array_map(function (${1:$item}) {",
+            "    return ${2:$item};",
+            "}, ${3:$array});"
+        ],
+        "description": "Array map"
+    },
+    "Array Filter": {
+        "prefix": "dit-array-filter",
+        "body": [
+            "array_filter(${1:$array}, function (${2:$item}) {",
+            "    return ${3:true};",
+            "});"
+        ],
+        "description": "Array filter"
+    },
+    "Array Reduce": {
+        "prefix": "dit-array-reduce",
+        "body": [
+            "array_reduce(${1:$array}, function (${2:$carry}, ${3:$item}) {",
+            "    return ${4:$carry};",
+            "}, ${5:null});"
+        ],
+        "description": "Array reduce"
+    },
+    "Foreach Loop": {
+        "prefix": "dit-foreach",
+        "body": [
+            "foreach (${1:$array} as ${2:$item}) {",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "Foreach loop"
+    },
+    "Foreach Key-Value": {
+        "prefix": "dit-foreach-key",
+        "body": [
+            "foreach (${1:$array} as ${2:$key} => ${3:$value}) {",
+            "    ${4:// code}",
+            "}"
+        ],
+        "description": "Foreach with key and value"
+    },
+    "Try Catch": {
+        "prefix": "dit-try-catch",
+        "body": [
+            "try {",
+            "    ${1:// code}",
+            "} catch (\\Exception $e) {",
+            "    throw $e;",
+            "}"
+        ],
+        "description": "Try catch block"
+    },
+    "Try Catch Custom": {
+        "prefix": "dit-try-catch-custom",
+        "body": [
+            "try {",
+            "    ${1:// code}",
+            "} catch (\\${2:Exception} $${3:e}) {",
+            "    ${4:// handle exception}",
+            "    throw $${3:e};",
+            "} finally {",
+            "    ${5:// cleanup}",
+            "}"
+        ],
+        "description": "Try catch with custom exception"
+    },
+    "Match Expression": {
+        "prefix": "dit-match",
+        "body": [
+            "return match (${1:$value}) {",
+            "    ${2:'case1'} => ${3:'result1'},",
+            "    ${4:'case2'} => ${5:'result2'},",
+            "    default => ${6:'default'},",
+            "};"
+        ],
+        "description": "Match expression (PHP 8+)"
+    },
+    "Nullsafe Operator": {
+        "prefix": "dit-nullsafe",
+        "body": [
+            "${1:$object}?->${2:method}()"
+        ],
+        "description": "Nullsafe operator (?->)"
+    },
+    "Null Coalesce": {
+        "prefix": "dit-nullcoalesce",
+        "body": [
+            "${1:$value} ?? ${2:'default'}"
+        ],
+        "description": "Null coalescing operator"
+    },
+    "Spaceship Operator": {
+        "prefix": "dit-spaceship",
+        "body": [
+            "${1:$a} <=> ${2:$b}"
+        ],
+        "description": "Spaceship operator (<=>)"
+    },
+    "Property Promotion": {
+        "prefix": "dit-promote",
+        "body": [
+            "public function __construct(",
+            "    private ${1:string} ${2:$property}",
+            ") {}"
+        ],
+        "description": "Constructor property promotion (PHP 8+)"
+    },
+    "Union Types": {
+        "prefix": "dit-union",
+        "body": [
+            "${1:public function} ${2:method}(): ${3:int}|${4:string}|null",
+            "{",
+            "    ${5:// code}",
+            "}"
+        ],
+        "description": "Union types (PHP 8+)"
+    },
+    "Named Arguments": {
+        "prefix": "dit-named-arg",
+        "body": [
+            "${1:functionName}(",
+            "    ${2:paramName}: ${3:value}",
+            ");"
+        ],
+        "description": "Named arguments (PHP 8+)"
+    },
+    "Attributes": {
+        "prefix": "dit-attribute",
+        "body": [
+            "#[${1:Attribute}]",
+            "public function ${2:method}()",
+            "{",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "PHP attribute (PHP 8+)"
+    },
+    "Route Attribute (Laravel)": {
+        "prefix": "dit-route",
+        "body": [
+            "use Illuminate\\Support\\Facades\\Route;",
+            "",
+            "Route::${1:get}('${2:/uri}', [${3:Controller}::class, '${4:method}'])${5:->name('${6:name}')};"
+        ],
+        "description": "Laravel route"
+    },
+    "Middleware (Laravel)": {
+        "prefix": "dit-middleware",
+        "body": [
+            "public function handle(${1:Request} $request, \\Closure ${2:next})",
+            "{",
+            "    ${3:// code}",
+            "    return $next($request);",
+            "}"
+        ],
+        "description": "Laravel middleware"
+    },
+    "Controller Method (Laravel)": {
+        "prefix": "dit-controller",
+        "body": [
+            "public function ${1:methodName}(${2:Request} $request)",
+            "{",
+            "    ${3:// code}",
+            "    return ${4:response}();",
+            "}"
+        ],
+        "description": "Laravel controller method"
+    },
+    "Eloquent Model (Laravel)": {
+        "prefix": "dit-model",
+        "body": [
+            "namespace App\\Models;",
+            "",
+            "use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;",
+            "use Illuminate\\Database\\Eloquent\\Model;",
+            "",
+            "class ${1:ModelName} extends Model",
+            "{",
+            "    use HasFactory;",
+            "",
+            "    protected $fillable = [",
+            "        ${2:'name'},",
+            "    ];",
+            "}"
+        ],
+        "description": "Laravel Eloquent model"
+    },
+    "Migration": {
+        "prefix": "dit-migration",
+        "body": [
+            "public function up(): void",
+            "{",
+            "    Schema::create('${1:table}', function (Blueprint $table) {",
+            "        $table->id();",
+            "        ${2:// columns}",
+            "        $table->timestamps();",
+            "    });",
+            "}",
+            "",
+            "public function down(): void",
+            "{",
+            "    Schema::dropIfExists('${1:table}');",
+            "}"
+        ],
+        "description": "Laravel migration"
+    },
+    "Seeder": {
+        "prefix": "dit-seeder",
+        "body": [
+            "public function run(): void",
+            "{",
+            "    ${1:Model}::create([",
+            "        ${2:'name'} => '${3:value}',",
+            "    ]);",
+            "}"
+        ],
+        "description": "Laravel seeder"
+    },
+    "Factory (Laravel)": {
+        "prefix": "dit-factory",
+        "body": [
+            "namespace Database\\Factories;",
+            "",
+            "use Illuminate\\Database\\Eloquent\\Factories\\Factory;",
+            "",
+            "class ${1:Model}Factory extends Factory",
+            "{",
+            "    protected $model = ${2:Model}::class;",
+            "",
+            "    public function definition(): array",
+            "    {",
+            "        return [",
+            "            ${3:'name'} => fake()->name(),",
+            "        ];",
+            "    }",
+            "}"
+        ],
+        "description": "Laravel factory"
+    },
+    "Blade Component": {
+        "prefix": "dit-blade-component",
+        "body": [
+            "<div>",
+            "    ${1:<!-- content -->}",
+            "</div>"
+        ],
+        "description": "Blade component template"
+    },
+    "Blade Directive": {
+        "prefix": "dit-blade-directive",
+        "body": [
+            "@${1:if}(${2:condition})",
+            "    ${3:// code}",
+            "@endif"
+        ],
+        "description": "Blade directive"
+    },
+    "Blade Loop": {
+        "prefix": "dit-blade-loop",
+        "body": [
+            "@foreach(${1:$items} as ${2:$item})",
+            "    ${3:{{ $2 }}",
+            "@endforeach"
+        ],
+        "description": "Blade foreach loop"
+    },
+    "Blade Component Class": {
+        "prefix": "dit-blade-class",
+        "body": [
+            "namespace App\\View\\Components;",
+            "",
+            "use Illuminate\\View\\Component;",
+            "",
+            "class ${1:ComponentName} extends Component",
+            "{",
+            "    public function __construct(",
+            "        public ${2:string} ${3:$prop}",
+            "    ) {}",
+            "",
+            "    public function render(): View",
+            "    {",
+            "        return view('${4:components.name}');",
+            "    }",
+            "}"
+        ],
+        "description": "Blade component class"
+    },
+    "PHPDoc Class": {
+        "prefix": "dit-doc-class",
+        "body": [
+            "/**",
+            " * Class ${1:ClassName}.",
+            " *",
+            " * @package ${2:Package}",
+            " * @since ${3:1.0.0}",
+            " */"
+        ],
+        "description": "PHPDoc class annotation"
+    },
+    "PHPDoc Method": {
+        "prefix": "dit-doc-method",
+        "body": [
+            "/**",
+            " * ${1:Description}.",
+            " *",
+            " * @param ${2:mixed} ${3:$param} ${4:Description}",
+            " * @return ${5:void}",
+            " * @throws ${6:\\Exception}",
+            " */"
+        ],
+        "description": "PHPDoc method annotation"
+    },
+    "PHPDoc Property": {
+        "prefix": "dit-doc-property",
+        "body": [
+            "/** @var ${1:type} ${2:description} */"
+        ],
+        "description": "PHPDoc property annotation"
+    },
+    "Var Dump": {
+        "prefix": "dit-dump",
+        "body": [
+            "var_dump(${1:$value});"
+        ],
+        "description": "Var dump"
+    },
+    "Print R": {
+        "prefix": "dit-printr",
+        "body": [
+            "print_r(${1:$value}, true);"
+        ],
+        "description": "Print_r"
+    },
+    "Die Dump (Laravel)": {
+        "prefix": "dit-dd",
+        "body": [
+            "dd(${1:$value});"
+        ],
+        "description": "Laravel dd() helper"
+    },
+    "JSON Encode": {
+        "prefix": "dit-json-encode",
+        "body": [
+            "json_encode(${1:$data}, ${2:JSON_PRETTY_PRINT});"
+        ],
+        "description": "JSON encode"
+    },
+    "JSON Decode": {
+        "prefix": "dit-json-decode",
+        "body": [
+            "json_decode('${1:json_string}', true);"
+        ],
+        "description": "JSON decode"
+    },
+    "Array Access": {
+        "prefix": "dit-array-access",
+        "body": [
+            "${1:$array}['${2:key}']"
+        ],
+        "description": "Array access"
+    },
+    "Is Set": {
+        "prefix": "dit-isset",
+        "body": [
+            "isset(${1:$value})"
+        ],
+        "description": "Isset check"
+    },
+    "Empty Check": {
+        "prefix": "dit-empty",
+        "body": [
+            "!empty(${1:$value})"
+        ],
+        "description": "Empty check"
+    },
+    "Include": {
+        "prefix": "dit-include",
+        "body": [
+            "include '${1:file.php}';"
+        ],
+        "description": "Include file"
+    },
+    "Include Once": {
+        "prefix": "dit-include-once",
+        "body": [
+            "include_once '${1:file.php}';"
+        ],
+        "description": "Include file once"
+    },
+    "Require": {
+        "prefix": "dit-require",
+        "body": [
+            "require '${1:file.php}';"
+        ],
+        "description": "Require file"
+    },
+    "Require Once": {
+        "prefix": "dit-require-once",
+        "body": [
+            "require_once '${1:file.php}';"
+        ],
+        "description": "Require file once"
+    },
+    "Define Constant": {
+        "prefix": "dit-define",
+        "body": [
+            "define('${1:CONSTANT_NAME}', ${2:'value'});"
+        ],
+        "description": "Define constant"
+    },
+    "Global Superglobal": {
+        "prefix": "dit-global",
+        "body": [
+            "global ${1:$variable};"
+        ],
+        "description": "Global variable"
+    },
+    "Session Start": {
+        "prefix": "dit-session-start",
+        "body": [
+            "session_start();"
+        ],
+        "description": "Start session"
+    },
+    "Session Set": {
+        "prefix": "dit-session-set",
+        "body": [
+            "$_SESSION['${1:key}'] = ${2:$value};"
+        ],
+        "description": "Set session value"
+    },
+    "Session Get": {
+        "prefix": "dit-session-get",
+        "body": [
+            "$_SESSION['${1:key}'] ?? ${2:null};"
+        ],
+        "description": "Get session value"
+    },
+    "Cookie": {
+        "prefix": "dit-cookie",
+        "body": [
+            "setcookie('${1:name}', ${2:$value}, time() + ${3:3600}, '/');"
+        ],
+        "description": "Set cookie"
+    },
+    "Header JSON": {
+        "prefix": "dit-header-json",
+        "body": [
+            "header('Content-Type: application/json');"
+        ],
+        "description": "Set JSON content type header"
+    },
+    "Exit": {
+        "prefix": "dit-exit",
+        "body": [
+            "exit;"
+        ],
+        "description": "Exit script"
+    }
+}

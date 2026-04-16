@@ -1,0 +1,524 @@
+{
+    "JavaScript File Header": {
+        "prefix": "dit-js-header",
+        "body": [
+            "/**",
+            " * @file ${1:filename}.js",
+            " * @author ${2:Author Name}",
+            " * @description ${3:Description}",
+            " * @date ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+            " */"
+        ],
+        "description": "JavaScript file header"
+    },
+    "Export Default": {
+        "prefix": "dit-export-default",
+        "body": [
+            "export default ${1:Name};"
+        ],
+        "description": "Export default"
+    },
+    "Export Named": {
+        "prefix": "dit-export",
+        "body": [
+            "export const ${1:name} = ${2:value};"
+        ],
+        "description": "Export named"
+    },
+    "Import": {
+        "prefix": "dit-import",
+        "body": [
+            "import ${1:name} from '${2:module}';"
+        ],
+        "description": "Import default"
+    },
+    "Import Named": {
+        "prefix": "dit-import-named",
+        "body": [
+            "import { ${1:name} } from '${2:module}';"
+        ],
+        "description": "Import named"
+    },
+    "Import All": {
+        "prefix": "dit-import-all",
+        "body": [
+            "import * as ${1:name} from '${2:module}';"
+        ],
+        "description": "Import all as namespace"
+    },
+    "Arrow Function": {
+        "prefix": "dit-arrow",
+        "body": [
+            "const ${1:fn} = (${2:params}) => {",
+            "    ${3:// code}",
+            "};"
+        ],
+        "description": "Arrow function"
+    },
+    "Async Arrow Function": {
+        "prefix": "dit-async-arrow",
+        "body": [
+            "const ${1:fn} = async (${2:params}) => {",
+            "    ${3:// code}",
+            "};"
+        ],
+        "description": "Async arrow function"
+    },
+    "Function Declaration": {
+        "prefix": "dit-fn",
+        "body": [
+            "function ${1:name}(${2:params}) {",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "Function declaration"
+    },
+    "Async Function": {
+        "prefix": "dit-async-fn",
+        "body": [
+            "async function ${1:name}(${2:params}) {",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "Async function declaration"
+    },
+    "IIFE": {
+        "prefix": "dit-iife",
+        "body": [
+            "(function() {",
+            "    'use strict';",
+            "    ${1:// code}",
+            "})();"
+        ],
+        "description": "Immediately Invoked Function Expression"
+    },
+    "Async IIFE": {
+        "prefix": "dit-iife-async",
+        "body": [
+            "(async function() {",
+            "    'use strict';",
+            "    ${1:// code}",
+            "})();"
+        ],
+        "description": "Async IIFE"
+    },
+    "Class": {
+        "prefix": "dit-class",
+        "body": [
+            "class ${1:ClassName} {",
+            "    constructor(${2:params}) {",
+            "        ${3:// init}",
+            "    }",
+            "",
+            "    ${4:method}() {",
+            "        ${5:// code}",
+            "    }",
+            "}"
+        ],
+        "description": "Class declaration"
+    },
+    "Class Extends": {
+        "prefix": "dit-class-extends",
+        "body": [
+            "class ${1:ClassName} extends ${2:ParentClass} {",
+            "    constructor(${3:params}) {",
+            "        super(${4:args});",
+            "        ${5:// init}",
+            "    }",
+            "}"
+        ],
+        "description": "Class extending another"
+    },
+    "Getter": {
+        "prefix": "dit-getter",
+        "body": [
+            "get ${1:property}() {",
+            "    return ${2:this._property};",
+            "}"
+        ],
+        "description": "Getter"
+    },
+    "Setter": {
+        "prefix": "dit-setter",
+        "body": [
+            "set ${1:property}(value) {",
+            "    ${2:this._property} = value;",
+            "}"
+        ],
+        "description": "Setter"
+    },
+    "console.log": {
+        "prefix": "dit-log",
+        "body": [
+            "console.log('${1:label}:', ${2:value});"
+        ],
+        "description": "Console log"
+    },
+    "console.error": {
+        "prefix": "dit-log-error",
+        "body": [
+            "console.error('${1:Error}:', ${2:error});"
+        ],
+        "description": "Console error"
+    },
+    "console.warn": {
+        "prefix": "dit-log-warn",
+        "body": [
+            "console.warn('${1:Warning}:', ${2:message});"
+        ],
+        "description": "Console warn"
+    },
+    "console.table": {
+        "prefix": "dit-log-table",
+        "body": [
+            "console.table(${1:data});"
+        ],
+        "description": "Console table"
+    },
+    "Try-Catch": {
+        "prefix": "dit-try-catch",
+        "body": [
+            "try {",
+            "    ${1:// code}",
+            "} catch (error) {",
+            "    console.error('${2:Error}:', error);",
+            "}"
+        ],
+        "description": "Try-catch block"
+    },
+    "Try-Catch-Finally": {
+        "prefix": "dit-try-catch-finally",
+        "body": [
+            "try {",
+            "    ${1:// code}",
+            "} catch (error) {",
+            "    console.error('${2:Error}:', error);",
+            "} finally {",
+            "    ${3:// cleanup}",
+            "}"
+        ],
+        "description": "Try-catch-finally block"
+    },
+    "Async Try-Catch": {
+        "prefix": "dit-try-catch-async",
+        "body": [
+            "try {",
+            "    const ${1:result} = await ${2:function}();",
+            "    ${3:// code}",
+            "} catch (error) {",
+            "    console.error('${4:Error}:', error);",
+            "}"
+        ],
+        "description": "Async try-catch"
+    },
+    "If Statement": {
+        "prefix": "dit-if",
+        "body": [
+            "if (${1:condition}) {",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "If statement"
+    },
+    "If-Else": {
+        "prefix": "dit-if-else",
+        "body": [
+            "if (${1:condition}) {",
+            "    ${2:// code}",
+            "} else {",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "If-else statement"
+    },
+    "Else If Chain": {
+        "prefix": "dit-if-elseif-else",
+        "body": [
+            "if (${1:condition}) {",
+            "    ${2:// code}",
+            "} else if (${3:condition2}) {",
+            "    ${4:// code}",
+            "} else {",
+            "    ${5:// code}",
+            "}"
+        ],
+        "description": "Else-if chain"
+    },
+    "Switch": {
+        "prefix": "dit-switch",
+        "body": [
+            "switch (${1:expression}) {",
+            "    case ${2:value1}:",
+            "        ${3:// code}",
+            "        break;",
+            "    case ${4:value2}:",
+            "        ${5:// code}",
+            "        break;",
+            "    default:",
+            "        ${6:// code}",
+            "        break;",
+            "}"
+        ],
+        "description": "Switch statement"
+    },
+    "For Loop": {
+        "prefix": "dit-for",
+        "body": [
+            "for (let ${1:i} = 0; ${1:i} < ${2:length}; ${1:i}++) {",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "For loop"
+    },
+    "For-Of": {
+        "prefix": "dit-for-of",
+        "body": [
+            "for (const ${1:item} of ${2:iterable}) {",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "For-of loop"
+    },
+    "For-In": {
+        "prefix": "dit-for-in",
+        "body": [
+            "for (const ${1:key} in ${2:object}) {",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "For-in loop"
+    },
+    "While": {
+        "prefix": "dit-while",
+        "body": [
+            "while (${1:condition}) {",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "While loop"
+    },
+    "Do-While": {
+        "prefix": "dit-do-while",
+        "body": [
+            "do {",
+            "    ${1:// code}",
+            "} while (${2:condition});"
+        ],
+        "description": "Do-while loop"
+    },
+    "Ternary": {
+        "prefix": "dit-ternary",
+        "body": [
+            "${1:condition} ? ${2:valueIfTrue} : ${3:valueIfFalse}"
+        ],
+        "description": "Ternary operator"
+    },
+    "Destructuring Object": {
+        "prefix": "dit-destructure",
+        "body": [
+            "const { ${1:prop1}, ${2:prop2} } = ${3:object};"
+        ],
+        "description": "Object destructuring"
+    },
+    "Destructuring Array": {
+        "prefix": "dit-destructure-array",
+        "body": [
+            "const [${1:item1}, ${2:item2}] = ${3:array};"
+        ],
+        "description": "Array destructuring"
+    },
+    "Spread Object": {
+        "prefix": "dit-spread-obj",
+        "body": [
+            "const ${1:newObj} = { ...${2:obj1}, ...${3:obj2} };"
+        ],
+        "description": "Object spread"
+    },
+    "Spread Array": {
+        "prefix": "dit-spread-arr",
+        "body": [
+            "const ${1:newArr} = [...${2:arr1}, ...${3:arr2}];"
+        ],
+        "description": "Array spread"
+    },
+    "Rest Parameters": {
+        "prefix": "dit-rest",
+        "body": [
+            "function ${1:fn}(${2:arg1}, ...${3:args}) {",
+            "    ${4:// code}",
+            "}"
+        ],
+        "description": "Rest parameters"
+    },
+    "Optional Chaining": {
+        "prefix": "dit-optional",
+        "body": [
+            "${1:obj}?.${2:prop}?.${3:nested}"
+        ],
+        "description": "Optional chaining"
+    },
+    "Nullish Coalescing": {
+        "prefix": "dit-nullish",
+        "body": [
+            "${1:value} ?? ${2:defaultValue}"
+        ],
+        "description": "Nullish coalescing"
+    },
+    "Fetch API": {
+        "prefix": "dit-fetch",
+        "body": [
+            "const response = await fetch('${1:url}');",
+            "if (!response.ok) throw new Error('${2:HTTP error!}');",
+            "const data = await response.json();"
+        ],
+        "description": "Fetch API call"
+    },
+    "Fetch POST": {
+        "prefix": "dit-fetch-post",
+        "body": [
+            "const response = await fetch('${1:url}', {",
+            "    method: 'POST',",
+            "    headers: {",
+            "        'Content-Type': 'application/json',",
+            "    },",
+            "    body: JSON.stringify(${2:data}),",
+            "});",
+            "const result = await response.json();"
+        ],
+        "description": "Fetch POST request"
+    },
+    "Async Map": {
+        "prefix": "dit-async-map",
+        "body": [
+            "const ${1:results} = await Promise.all(",
+            "    ${2:array}.map(async (${3:item}) => {",
+            "        return ${4:item};",
+            "    })",
+            ");"
+        ],
+        "description": "Async map over array"
+    },
+    "Promise": {
+        "prefix": "dit-promise",
+        "body": [
+            "new Promise((resolve, reject) => {",
+            "    ${1:// code}",
+            "    resolve(${2:value});",
+            "    // or reject(new Error('${3:error}'));",
+            "});"
+        ],
+        "description": "Promise"
+    },
+    "Promise Chain": {
+        "prefix": "dit-then-catch",
+        "body": [
+            "${1:promise}",
+            "    .then((${2:result}) => {",
+            "        ${3:// code}",
+            "    })",
+            "    .catch((${4:error}) => {",
+            "        console.error('${5:Error}:', ${4:error});",
+            "    });"
+        ],
+        "description": "Promise then-catch"
+    },
+    "Object Method": {
+        "prefix": "dit-method",
+        "body": [
+            "${1:methodName}(${2:params}) {",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "Object method shorthand"
+    },
+    "Object Property": {
+        "prefix": "dit-prop",
+        "body": [
+            "${1:key}: ${2:value}"
+        ],
+        "description": "Object property"
+    },
+    "Computed Property": {
+        "prefix": "dit-computed",
+        "body": [
+            "[${1:expression}]: ${2:value}"
+        ],
+        "description": "Computed property name"
+    },
+    "JSON Parse": {
+        "prefix": "dit-json-parse",
+        "body": [
+            "const ${1:data} = JSON.parse('${2:jsonString}');"
+        ],
+        "description": "JSON parse"
+    },
+    "JSON Stringify": {
+        "prefix": "dit-json-stringify",
+        "body": [
+            "const ${1:jsonString} = JSON.stringify(${2:data}, null, 2);"
+        ],
+        "description": "JSON stringify"
+    },
+    "Set Interval": {
+        "prefix": "dit-interval",
+        "body": [
+            "setInterval(() => {",
+            "    ${1:// code}",
+            "}, ${2:1000});"
+        ],
+        "description": "Set interval"
+    },
+    "Set Timeout": {
+        "prefix": "dit-timeout",
+        "body": [
+            "setTimeout(() => {",
+            "    ${1:// code}",
+            "}, ${2:1000});"
+        ],
+        "description": "Set timeout"
+    },
+    "Module Export": {
+        "prefix": "dit-module-export",
+        "body": [
+            "module.exports = {",
+            "    ${1:name},",
+            "};"
+        ],
+        "description": "Module export"
+    },
+    "Require": {
+        "prefix": "dit-require",
+        "body": [
+            "const ${1:name} = require('${2:module}');"
+        ],
+        "description": "Require module"
+    },
+    "Guard Clause": {
+        "prefix": "dit-guard",
+        "body": [
+            "if (!${1:condition}) {",
+            "    return;",
+            "}",
+            "${2:// main logic}"
+        ],
+        "description": "Guard clause"
+    },
+    "Early Return": {
+        "prefix": "dit-early-return",
+        "body": [
+            "if (${1:condition}) {",
+            "    return ${2:value};",
+            "}"
+        ],
+        "description": "Early return"
+    },
+    "Comment Block": {
+        "prefix": "dit-comment",
+        "body": [
+            "/*",
+            " * ${1:Comment}",
+            " */"
+        ],
+        "description": "Comment block"
+    }
+}

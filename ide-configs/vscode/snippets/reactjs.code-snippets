@@ -1,0 +1,340 @@
+{
+    "React Functional Component": {
+        "prefix": "dit-rfc",
+        "body": [
+            "import React from 'react';",
+            "",
+            "interface ${1:ComponentName}Props {",
+            "    ${2:prop}: ${3:string};",
+            "}",
+            "",
+            "const ${1:ComponentName}: React.FC<${1:ComponentName}Props> = ({ ${2:prop} }) => {",
+            "    return (",
+            "        <div>",
+            "            $0",
+            "        </div>",
+            "    );",
+            "};",
+            "",
+            "export default ${1:ComponentName};"
+        ],
+        "description": "React functional component with TypeScript"
+    },
+    "React Component with Props": {
+        "prefix": "dit-rfc-prop",
+        "body": [
+            "import React from 'react';",
+            "",
+            "interface ${1:ComponentName}Props {",
+            "    ${2:className}?: string;",
+            "    ${3:children}?: React.ReactNode;",
+            "}",
+            "",
+            "export const ${1:ComponentName}: React.FC<${1:ComponentName}Props> = ({",
+            "    ${2:className} = '',",
+            "    ${3:children},",
+            "}) => {",
+            "    return (",
+            "        <div className={${2:className}}>",
+            "            {${3:children}}",
+            "        </div>",
+            "    );",
+            "};"
+        ],
+        "description": "React functional component with className and children"
+    },
+    "React useState Hook": {
+        "prefix": "dit-use-state",
+        "body": [
+            "const [${1:state}, set${1:State}] = useState<${2:string}>(${3:''});"
+        ],
+        "description": "React useState hook with TypeScript"
+    },
+    "React useEffect Hook": {
+        "prefix": "dit-use-effect",
+        "body": [
+            "useEffect(() => {",
+            "    ${1:// effect}",
+            "    return () => {",
+            "        ${2:// cleanup}",
+            "    };",
+            "}, [${3:deps}]);"
+        ],
+        "description": "React useEffect hook"
+    },
+    "React useCallback Hook": {
+        "prefix": "dit-use-callback",
+        "body": [
+            "const ${1:callback} = useCallback<",
+            "    React.Callable<[${2:void}], ${3:void}>",
+            ">(() => {",
+            "    ${4:// callback body}",
+            "}, [${5:deps}]);"
+        ],
+        "description": "React useCallback hook with TypeScript"
+    },
+    "React useMemo Hook": {
+        "prefix": "dit-use-memo",
+        "body": [
+            "const ${1:memoizedValue} = useMemo(() => {",
+            "    return ${2:value};",
+            "}, [${3:deps}]);"
+        ],
+        "description": "React useMemo hook"
+    },
+    "React useRef Hook": {
+        "prefix": "dit-use-ref",
+        "body": [
+            "const ${1:ref} = useRef<${2:HTMLDivElement}>(${3:null});"
+        ],
+        "description": "React useRef hook with TypeScript"
+    },
+    "React useContext Hook": {
+        "prefix": "dit-use-context",
+        "body": [
+            "const ${1:context} = useContext(${2:Context});"
+        ],
+        "description": "React useContext hook"
+    },
+    "React Create Context": {
+        "prefix": "dit-create-context",
+        "body": [
+            "import React, { createContext, useContext, useState } from 'react';",
+            "",
+            "interface ${1:ContextName}ProviderProps {",
+            "    children: React.ReactNode;",
+            "}",
+            "",
+            "interface ${1:ContextName}ContextType {",
+            "    ${2:value}: ${3:string};",
+            "    set${2:Value}: (${2:value}: ${3:string}) => void;",
+            "}",
+            "",
+            "const ${1:ContextName}Context = createContext<${1:ContextName}ContextType | undefined>(undefined);",
+            "",
+            "export const ${1:ContextName}Provider: React.FC<${1:ContextName}ProviderProps> = ({ children }) => {",
+            "    const [${2:value}, set${2:Value}] = useState<${3:string}>(${4:''});",
+            "",
+            "    return (",
+            "        <${1:ContextName}Context.Provider value={{ ${2:value}, set${2:Value} }}>",
+            "            {children}",
+            "        </${1:ContextName}Context.Provider>",
+            "    );",
+            "};",
+            "",
+            "export const use${1:ContextName} = () => {",
+            "    const context = useContext(${1:ContextName}Context);",
+            "    if (context === undefined) {",
+            "        throw new Error('use${1:ContextName} must be used within a ${1:ContextName}Provider');",
+            "    }",
+            "    return context;",
+            "};"
+        ],
+        "description": "Create React context with provider and hook"
+    },
+    "React Custom Hook": {
+        "prefix": "dit-use-custom",
+        "body": [
+            "import { useState, useEffect } from 'react';",
+            "",
+            "export function use${1:HookName}(${2:initialValue}) {",
+            "    const [${3:state}, set${3:State}] = useState(${2:initialValue});",
+            "",
+            "    useEffect(() => {",
+            "        ${4:// effect}",
+            "    }, [${5:deps}]);",
+            "",
+            "    return { ${3:state}, set${3:State} };",
+            "}"
+        ],
+        "description": "Custom React hook"
+    },
+    "React useReducer Hook": {
+        "prefix": "dit-use-reducer",
+        "body": [
+            "type State = {",
+            "    ${1:key}: ${2:string};",
+            "};",
+            "",
+            "type Action =",
+            "    | { type: '${3:ACTION_TYPE}'; payload: ${2:string} }",
+            "    | { type: '${4:RESET}' };",
+            "",
+            "const initialState: State = {",
+            "    ${1:key}: ${5:''},",
+            "};",
+            "",
+            "function reducer(state: State, action: Action): State {",
+            "    switch (action.type) {",
+            "        case '${3:ACTION_TYPE}':",
+            "            return { ...state, ${1:key}: action.payload };",
+            "        case '${4:RESET}':",
+            "            return initialState;",
+            "        default:",
+            "            return state;",
+            "    }",
+            "}",
+            "",
+            "const [state, dispatch] = useReducer(reducer, initialState);"
+        ],
+        "description": "React useReducer hook with TypeScript"
+    },
+    "React Forward Ref": {
+        "prefix": "dit-rfc-forward",
+        "body": [
+            "import React, { forwardRef } from 'react';",
+            "",
+            "interface ${1:ComponentName}Props {",
+            "    ${2:className}?: string;",
+            "}",
+            "",
+            "const ${1:ComponentName} = forwardRef<HTMLDivElement, ${1:ComponentName}Props>(({" ,
+            "    ${2:className},",
+            "}, ref) => {",
+            "    return (",
+            "        <div ref={ref} className={${2:className}}>",
+            "            $0",
+            "        </div>",
+            "    );",
+            "});",
+            "",
+            "${1:ComponentName}.displayName = '${1:ComponentName}';",
+            "",
+            "export default ${1:ComponentName};"
+        ],
+        "description": "React component with forward ref"
+    },
+    "React useLayoutEffect": {
+        "prefix": "dit-use-layout-effect",
+        "body": [
+            "useLayoutEffect(() => {",
+            "    ${1:// effect}",
+            "    return () => {",
+            "        ${2:// cleanup}",
+            "    };",
+            "}, [${3:deps}]);"
+        ],
+        "description": "React useLayoutEffect hook"
+    },
+    "React memo Component": {
+        "prefix": "dit-rfc-memo",
+        "body": [
+            "import React, { memo } from 'react';",
+            "",
+            "interface ${1:ComponentName}Props {",
+            "    ${2:prop}: ${3:string};",
+            "}",
+            "",
+            "const ${1:ComponentName} = memo<${1:ComponentName}Props>(({ ${2:prop} }) => {",
+            "    return (",
+            "        <div>",
+            "            {${2:prop}}",
+            "        </div>",
+            "    );",
+            "});",
+            "",
+            "${1:ComponentName}.displayName = '${1:ComponentName}';",
+            "",
+            "export default ${1:ComponentName};"
+        ],
+        "description": "React memo component"
+    },
+    "React Async Handler": {
+        "prefix": "dit-async-handler",
+        "body": [
+            "const [loading, setLoading] = useState(false);",
+            "const [error, setError] = useState<string | null>(null);",
+            "",
+            "const handle${1:Action} = async (${2:e}: React.MouseEvent) => {",
+            "    e.preventDefault();",
+            "    setLoading(true);",
+            "    setError(null);",
+            "",
+            "    try {",
+            "        ${3:// async operation}",
+            "        const result = await ${4:fetchData}();",
+            "        ${5:// handle result}",
+            "    } catch (err) {",
+            "        setError(err instanceof Error ? err.message : '${6:An error occurred}');",
+            "    } finally {",
+            "        setLoading(false);",
+            "    }",
+            "};"
+        ],
+        "description": "Async event handler with loading and error states"
+    },
+    "React Fetch Data Effect": {
+        "prefix": "dit-use-fetch",
+        "body": [
+            "const [data, setData] = useState<${1:any}>(null);",
+            "const [loading, setLoading] = useState(true);",
+            "const [error, setError] = useState<string | null>(null);",
+            "",
+            "useEffect(() => {",
+            "    const fetchData = async () => {",
+            "        setLoading(true);",
+            "        try {",
+            "            const response = await fetch('${2:url}');",
+            "            if (!response.ok) throw new Error('${3:Network response was not ok}');",
+            "            const result = await response.json();",
+            "            setData(result);",
+            "        } catch (err) {",
+            "            setError(err instanceof Error ? err.message : '${4:An error occurred}');",
+            "        } finally {",
+            "            setLoading(false);",
+            "        }",
+            "    };",
+            "",
+            "    fetchData();",
+            "}, [${5:deps}]);"
+        ],
+        "description": "Fetch data with useEffect"
+    },
+    "React Class Component": {
+        "prefix": "dit-rcc",
+        "body": [
+            "import React, { Component } from 'react';",
+            "",
+            "interface Props {",
+            "    ${1:className}?: string;",
+            "}",
+            "",
+            "interface State {",
+            "    ${2:value}: ${3:string};",
+            "}",
+            "",
+            "class ${4:ComponentName} extends Component<Props, State> {",
+            "    state: State = {",
+            "        ${2:value}: ${5:''},",
+            "    };",
+            "",
+            "    render() {",
+            "        return (",
+            "            <div className={this.props.${1:className}}>",
+            "                {this.state.${2:value}}",
+            "            </div>",
+            "        );",
+            "    }",
+            "}",
+            "",
+            "export default ${4:ComponentName};"
+        ],
+        "description": "React class component with TypeScript"
+    },
+    "React useId Hook": {
+        "prefix": "dit-use-id",
+        "body": [
+            "const id = useId();"
+        ],
+        "description": "React useId hook"
+    },
+    "React useDebugValue": {
+        "prefix": "dit-use-debug",
+        "body": [
+            "useDebugValue(${1:data}, (d) => {",
+            "    return ${2:`${1:data} is: $${1:d}`};",
+            "});"
+        ],
+        "description": "React useDebugValue hook"
+    }
+}

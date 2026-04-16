@@ -1,0 +1,540 @@
+{
+    "Python File Header": {
+        "prefix": "dit-py-header",
+        "body": [
+            "\"\"\"",
+            "@file: ${1:filename}.py",
+            "@author: ${2:Author Name}",
+            "@description: ${3:Description}",
+            "@date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}",
+            "\"\"\""
+        ],
+        "description": "Python file header"
+    },
+    "Main Guard": {
+        "prefix": "dit-main",
+        "body": [
+            "if __name__ == '__main__':",
+            "    ${1:main()}",
+            ""
+        ],
+        "description": "Main guard"
+    },
+    "Class": {
+        "prefix": "dit-class",
+        "body": [
+            "class ${1:ClassName}:",
+            "    \"\"\"${2:Docstring}.\"\"\"",
+            "",
+            "    def __init__(self${3:, args}):",
+            "        ${4:pass}",
+            ""
+        ],
+        "description": "Class definition"
+    },
+    "Class Inheritance": {
+        "prefix": "dit-class-inherit",
+        "body": [
+            "class ${1:ClassName}(${2:ParentClass}):",
+            "    \"\"\"${3:Docstring}.\"\"\"",
+            "",
+            "    def __init__(self${4:, args}):",
+            "        super().__init__(${5:args})",
+            "        ${6:pass}",
+            ""
+        ],
+        "description": "Class with inheritance"
+    },
+    "Init Method": {
+        "prefix": "dit-init",
+        "body": [
+            "def __init__(self${1:, args}):",
+            "    ${2:pass}"
+        ],
+        "description": "Init method"
+    },
+    "Instance Method": {
+        "prefix": "dit-def",
+        "body": [
+            "def ${1:method_name}(self${2:, args}):",
+            "    \"\"\"${3:Docstring}.\"\"\"",
+            "    ${4:pass}"
+        ],
+        "description": "Instance method"
+    },
+    "Static Method": {
+        "prefix": "dit-static",
+        "body": [
+            "@staticmethod",
+            "def ${1:method_name}(${2:args}):",
+            "    \"\"\"${3:Docstring}.\"\"\"",
+            "    ${4:pass}"
+        ],
+        "description": "Static method"
+    },
+    "Class Method": {
+        "prefix": "dit-classmethod",
+        "body": [
+            "@classmethod",
+            "def ${1:method_name}(cls${2:, args}):",
+            "    \"\"\"${3:Docstring}.\"\"\"",
+            "    ${4:pass}"
+        ],
+        "description": "Class method"
+    },
+    "Property": {
+        "prefix": "dit-property",
+        "body": [
+            "@property",
+            "def ${1:name}(self):",
+            "    \"\"\"${2:Docstring}.\"\"\"",
+            "    return self._${1:name}",
+            "",
+            "@${1:name}.setter",
+            "def ${1:name}(self, value):",
+            "    self._${1:name} = value"
+        ],
+        "description": "Property getter/setter"
+    },
+    "Async Function": {
+        "prefix": "dit-async",
+        "body": [
+            "async def ${1:function_name}(${2:args}):",
+            "    \"\"\"${3:Docstring}.\"\"\"",
+            "    ${4:pass}"
+        ],
+        "description": "Async function"
+    },
+    "Async With": {
+        "prefix": "dit-async-with",
+        "body": [
+            "async with ${1:expression} as ${2:alias}:",
+            "    ${3:pass}"
+        ],
+        "description": "Async with"
+    },
+    "Async For": {
+        "prefix": "dit-async-for",
+        "body": [
+            "async for ${1:item} in ${2:iterable}:",
+            "    ${3:pass}"
+        ],
+        "description": "Async for loop"
+    },
+    "Import": {
+        "prefix": "dit-import",
+        "body": [
+            "import ${1:module}"
+        ],
+        "description": "Import"
+    },
+    "From Import": {
+        "prefix": "dit-from",
+        "body": [
+            "from ${1:module} import ${2:name}"
+        ],
+        "description": "From import"
+    },
+    "Print": {
+        "prefix": "dit-print",
+        "body": [
+            "print(f'${1:{${2:value}}}')"
+        ],
+        "description": "F-string print"
+    },
+    "Print Debug": {
+        "prefix": "dit-print-debug",
+        "body": [
+            "print(f'${1:label}=${1:{}}'.format(${1:value}))"
+        ],
+        "description": "Debug print"
+    },
+    "Try Except": {
+        "prefix": "dit-try-except",
+        "body": [
+            "try:",
+            "    ${1:pass}",
+            "except ${2:Exception} as e:",
+            "    print(f'${3:Error}: {e}')",
+            "    ${4:raise}"
+        ],
+        "description": "Try-except"
+    },
+    "Try Except Else Finally": {
+        "prefix": "dit-try-except-finally",
+        "body": [
+            "try:",
+            "    ${1:pass}",
+            "except ${2:Exception} as e:",
+            "    print(f'${3:Error}: {e}')",
+            "    ${4:raise}",
+            "else:",
+            "    ${5:pass}",
+            "finally:",
+            "    ${6:pass}"
+        ],
+        "description": "Try-except-else-finally"
+    },
+    "Raise": {
+        "prefix": "dit-raise",
+        "body": [
+            "raise ${1:Exception}('${2:message}')"
+        ],
+        "description": "Raise exception"
+    },
+    "If Statement": {
+        "prefix": "dit-if",
+        "body": [
+            "if ${1:condition}:",
+            "    ${2:pass}"
+        ],
+        "description": "If statement"
+    },
+    "If Else": {
+        "prefix": "dit-if-else",
+        "body": [
+            "if ${1:condition}:",
+            "    ${2:pass}",
+            "else:",
+            "    ${3:pass}"
+        ],
+        "description": "If-else"
+    },
+    "Elif Chain": {
+        "prefix": "dit-elif",
+        "body": [
+            "if ${1:condition1}:",
+            "    ${2:pass}",
+            "elif ${3:condition2}:",
+            "    ${4:pass}",
+            "else:",
+            "    ${5:pass}"
+        ],
+        "description": "Elif chain"
+    },
+    "Match Case": {
+        "prefix": "dit-match",
+        "body": [
+            "match ${1:subject}:",
+            "    case ${2:value1}:",
+            "        ${3:pass}",
+            "    case ${4:value2}:",
+            "        ${5:pass}",
+            "    case _:",
+            "        ${6:pass}"
+        ],
+        "description": "Match-case (Python 3.10+)"
+    },
+    "For Loop": {
+        "prefix": "dit-for",
+        "body": [
+            "for ${1:item} in ${2:iterable}:",
+            "    ${3:pass}"
+        ],
+        "description": "For loop"
+    },
+    "For Else": {
+        "prefix": "dit-for-else",
+        "body": [
+            "for ${1:item} in ${2:iterable}:",
+            "    ${3:pass}",
+            "else:",
+            "    ${4:pass}"
+        ],
+        "description": "For-else loop"
+    },
+    "While Loop": {
+        "prefix": "dit-while",
+        "body": [
+            "while ${1:condition}:",
+            "    ${2:pass}"
+        ],
+        "description": "While loop"
+    },
+    "List Comprehension": {
+        "prefix": "dit-list-comp",
+        "body": [
+            "[${1:x} for ${1:x} in ${2:iterable}]"
+        ],
+        "description": "List comprehension"
+    },
+    "List Comprehension If": {
+        "prefix": "dit-list-comp-if",
+        "body": [
+            "[${1:x} for ${1:x} in ${2:iterable} if ${3:condition}]"
+        ],
+        "description": "List comprehension with if"
+    },
+    "Dict Comprehension": {
+        "prefix": "dit-dict-comp",
+        "body": [
+            "{${1:key}: ${2:value} for ${3:k}, ${4:v} in ${5:iterable}}"
+        ],
+        "description": "Dict comprehension"
+    },
+    "Generator Expression": {
+        "prefix": "dit-gen",
+        "body": [
+            "(${1:x} for ${1:x} in ${2:iterable})"
+        ],
+        "description": "Generator expression"
+    },
+    "With Open": {
+        "prefix": "dit-with",
+        "body": [
+            "with open('${1:file}', '${2:r}') as f:",
+            "    ${3:pass}"
+        ],
+        "description": "With open file"
+    },
+    "With Context Manager": {
+        "prefix": "dit-context-manager",
+        "body": [
+            "class ${1:ContextManager}:",
+            "    def __enter__(self):",
+            "        ${2:pass}",
+            "        return self",
+            "",
+            "    def __exit__(self, exc_type, exc_val, exc_tb):",
+            "        ${3:pass}"
+        ],
+        "description": "Context manager class"
+    },
+    "Decorator": {
+        "prefix": "dit-decorator",
+        "body": [
+            "def ${1:decorator_name}(func):",
+            "    @functools.wraps(func)",
+            "    def wrapper(*args, **kwargs):",
+            "        ${2:pass}",
+            "        return func(*args, **kwargs)",
+            "    return wrapper"
+        ],
+        "description": "Decorator function"
+    },
+    "Decorator Class": {
+        "prefix": "dit-decorator-class",
+        "body": [
+            "class ${1:DecoratorClass}:",
+            "    def __init__(self, func):",
+            "        functools.update_wrapper(self, func)",
+            "",
+            "    def __call__(self, *args, **kwargs):",
+            "        ${2:pass}",
+            "        return self._func(*args, **kwargs)"
+        ],
+        "description": "Decorator class"
+    },
+    "Lambda": {
+        "prefix": "dit-lambda",
+        "body": [
+            "lambda ${1:x}: ${2:x}"
+        ],
+        "description": "Lambda function"
+    },
+    "Map": {
+        "prefix": "dit-map",
+        "body": [
+            "map(${1:func}, ${2:iterable})"
+        ],
+        "description": "Map function"
+    },
+    "Filter": {
+        "prefix": "dit-filter",
+        "body": [
+            "filter(${1:func}, ${2:iterable})"
+        ],
+        "description": "Filter function"
+    },
+    "Reduce": {
+        "prefix": "dit-reduce",
+        "body": [
+            "functools.reduce(${1:func}, ${2:iterable}${3:, initial})"
+        ],
+        "description": "Reduce function"
+    },
+    "Dataclass": {
+        "prefix": "dit-dataclass",
+        "body": [
+            "@dataclass",
+            "class ${1:ClassName}:",
+            "    \"\"\"${2:Docstring}.\"\"\"",
+            "    ${3:field}: ${4:type}",
+            "    ${5:field2}: ${6:type} = ${7:default}"
+        ],
+        "description": "Dataclass"
+    },
+    "TypedDict": {
+        "prefix": "dit-typeddict",
+        "body": [
+            "class ${1:TypedDictName}(TypedDict):",
+            "    ${2:key}: ${3:type}"
+        ],
+        "description": "TypedDict"
+    },
+    "NamedTuple": {
+        "prefix": "dit-namedtuple",
+        "body": [
+            "${1:ClassName} = namedtuple('${1:ClassName}', ['${2:field1}', '${3:field2}'])"
+        ],
+        "description": "Named tuple"
+    },
+    "Enum": {
+        "prefix": "dit-enum",
+        "body": [
+            "class ${1:EnumName}(Enum):",
+            "    ${2:VALUE1} = '${3:value1}'",
+            "    ${4:VALUE2} = '${5:value2}'"
+        ],
+        "description": "Enum class"
+    },
+    "Type Hint": {
+        "prefix": "dit-type-hint",
+        "body": [
+            "${1:var}: ${2:type} = ${3:value}"
+        ],
+        "description": "Type hint"
+    },
+    "Function Type Hint": {
+        "prefix": "dit-func-type-hint",
+        "body": [
+            "def ${1:function}(${2:param}: ${3:type}) -> ${4:return_type}:",
+            "    ${5:pass}"
+        ],
+        "description": "Function with type hints"
+    },
+    "Union Type": {
+        "prefix": "dit-union-type",
+        "body": [
+            "${1:var}: ${2:type1} | ${3:type2} = ${4:value}"
+        ],
+        "description": "Union type hint"
+    },
+    "Optional Type": {
+        "prefix": "dit-optional-type",
+        "body": [
+            "${1:var}: Optional[${2:type}] = ${3:None}"
+        ],
+        "description": "Optional type hint"
+    },
+    "Slice": {
+        "prefix": "dit-slice",
+        "body": [
+            "${1:list}[${2:start}:${3:end}]"
+        ],
+        "description": "Slice"
+    },
+    "Unpacking": {
+        "prefix": "dit-unpack",
+        "body": [
+            "${1:a}, ${2:b} = ${3:tuple}"
+        ],
+        "description": "Tuple unpacking"
+    },
+    "Extended Unpacking": {
+        "prefix": "dit-unpack-extended",
+        "body": [
+            "${1:first}, *${2:middle}, ${3:last} = ${4:iterable}"
+        ],
+        "description": "Extended unpacking"
+    },
+    "F-String": {
+        "prefix": "dit-fstring",
+        "body": [
+            "f'${1:{${2:value}}}'"
+        ],
+        "description": "F-string"
+    },
+    "Docstring Google Style": {
+        "prefix": "dit-docstring",
+        "body": [
+            "def ${1:function}(${2:args}):",
+            "    \"\"\"${3:Summary line.}",
+            "",
+            "    Args:",
+            "        ${4:param_name}: ${5:Description}",
+            "",
+            "    Returns:",
+            "        ${6:Description}",
+            "",
+            "    Raises:",
+            "        ${7:Exception}: ${8:Description}",
+            "    \"\"\"",
+            "    ${9:pass}"
+        ],
+        "description": "Google-style docstring"
+    },
+    "Unit Test Class": {
+        "prefix": "dit-unittest",
+        "body": [
+            "import unittest",
+            "",
+            "",
+            "class Test${1:ClassName}(unittest.TestCase):",
+            "    \"\"\"Test cases for ${1:ClassName}.\"\"\"",
+            "",
+            "    def setUp(self):",
+            "        \"\"\"Set up test fixtures.\"\"\"",
+            "        ${2:pass}",
+            "",
+            "    def test_${3:method_name}(self):",
+            "        \"\"\"Test ${3:method_name}.\"\"\"",
+            "        ${4:pass}",
+            "",
+            "",
+            "if __name__ == '__main__':",
+            "    unittest.main()"
+        ],
+        "description": "Unit test class"
+    },
+    "Pytest Function": {
+        "prefix": "dit-pytest",
+        "body": [
+            "def test_${1:function_name}():",
+            "    \"\"\"Test ${1:function_name}.\"\"\"",
+            "    ${2:assert} ${3:True}"
+        ],
+        "description": "Pytest function"
+    },
+    "Pytest Fixture": {
+        "prefix": "dit-fixture",
+        "body": [
+            "@pytest.fixture",
+            "def ${1:fixture_name}():",
+            "    \"\"\"${2:Description}.\"\"\"",
+            "    ${3:yield} ${4:value}"
+        ],
+        "description": "Pytest fixture"
+    },
+    "Argparse": {
+        "prefix": "dit-argparse",
+        "body": [
+            "import argparse",
+            "",
+            "parser = argparse.ArgumentParser(",
+            "    description='${1:Description}'",
+            ")",
+            "parser.add_argument('${2:arg}', type=${3:str}, help='${4:Help text}')",
+            "args = parser.parse_args()"
+        ],
+        "description": "Argparse setup"
+    },
+    "Walrus Operator": {
+        "prefix": "dit-walrus",
+        "body": [
+            "if (${1:value} := ${2:expression}):",
+            "    ${3:pass}"
+        ],
+        "description": "Walrus operator (:=)"
+    },
+    "Exception Group": {
+        "prefix": "dit-exceptiongroup",
+        "body": [
+            "try:",
+            "    ${1:pass}",
+            "except* ${2:Exception}:",
+            "    ${3:pass}"
+        ],
+        "description": "Exception group (Python 3.11+)"
+    }
+}

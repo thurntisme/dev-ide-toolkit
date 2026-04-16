@@ -1,0 +1,802 @@
+{
+    "Rust File Header": {
+        "prefix": "dit-rs-header",
+        "body": [
+            "//! ${1:Module description}",
+            "//!",
+            "//! @author ${2:Author Name}",
+            "//! @date ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}",
+            ""
+        ],
+        "description": "Rust file header"
+    },
+    "Main Function": {
+        "prefix": "dit-main",
+        "body": [
+            "fn main() {",
+            "    ${1:println!(\"Hello, world!\");}",
+            "}"
+        ],
+        "description": "Main function"
+    },
+    "Async Main": {
+        "prefix": "dit-async-main",
+        "body": [
+            "#[tokio::main]",
+            "async fn main() -> Result<(), Box<dyn std::error::Error>> {",
+            "    ${1:Ok(())}",
+            "}"
+        ],
+        "description": "Async main function"
+    },
+    "Function": {
+        "prefix": "dit-fn",
+        "body": [
+            "fn ${1:function_name}(${2:arg}: ${3:type}) -> ${4:ReturnType} {",
+            "    ${5:todo!()}",
+            "}"
+        ],
+        "description": "Function"
+    },
+    "Async Function": {
+        "prefix": "dit-async-fn",
+        "body": [
+            "async fn ${1:function_name}(${2:arg}: ${3:type}) -> ${4:Result}<${5:type}, ${6:Error}> {",
+            "    ${7:todo!()}",
+            "}"
+        ],
+        "description": "Async function"
+    },
+    "Public Function": {
+        "prefix": "dit-pub-fn",
+        "body": [
+            "pub fn ${1:function_name}(${2:arg}: ${3:type}) -> ${4:type} {",
+            "    ${5:todo!()}",
+            "}"
+        ],
+        "description": "Public function"
+    },
+    "Public Async Function": {
+        "prefix": "dit-pub-async-fn",
+        "body": [
+            "pub async fn ${1:function_name}(${2:arg}: ${3:type}) -> ${4:Result}<${5:type}, ${6:Error}> {",
+            "    ${7:todo!()}",
+            "}"
+        ],
+        "description": "Public async function"
+    },
+    "Struct": {
+        "prefix": "dit-struct",
+        "body": [
+            "struct ${1:StructName} {",
+            "    ${2:field}: ${3:type},",
+            "}"
+        ],
+        "description": "Struct"
+    },
+    "Tuple Struct": {
+        "prefix": "dit-tuple-struct",
+        "body": [
+            "struct ${1:StructName}(${2:type});"
+        ],
+        "description": "Tuple struct"
+    },
+    "Unit Struct": {
+        "prefix": "dit-unit-struct",
+        "body": [
+            "struct ${1:StructName};"
+        ],
+        "description": "Unit struct"
+    },
+    "Impl Block": {
+        "prefix": "dit-impl",
+        "body": [
+            "impl ${1:TypeName} {",
+            "    ${2:fn method(&self) {",
+            "        todo!()",
+            "    }}",
+            "}"
+        ],
+        "description": "Impl block"
+    },
+    "Impl Trait": {
+        "prefix": "dit-impl-trait",
+        "body": [
+            "impl ${1:TraitName} for ${2:TypeName} {",
+            "    ${3:fn method(&self) {",
+            "        todo!()",
+            "    }}",
+            "}"
+        ],
+        "description": "Impl trait for type"
+    },
+    "Trait": {
+        "prefix": "dit-trait",
+        "body": [
+            "trait ${1:TraitName} {",
+            "    fn ${2:method}(&self);",
+            "}"
+        ],
+        "description": "Trait definition"
+    },
+    "Trait with Default": {
+        "prefix": "dit-trait-default",
+        "body": [
+            "trait ${1:TraitName} {",
+            "    fn ${2:method}(&self) {",
+            "        ${3:todo!()}",
+            "    }",
+            "}"
+        ],
+        "description": "Trait with default implementation"
+    },
+    "Enum": {
+        "prefix": "dit-enum",
+        "body": [
+            "enum ${1:EnumName} {",
+            "    ${2:Variant1},",
+            "    ${3:Variant2}${4:(i32)},",
+            "}"
+        ],
+        "description": "Enum"
+    },
+    "Enum Match": {
+        "prefix": "dit-enum-match",
+        "body": [
+            "match ${1:value} {",
+            "    ${2:EnumName}::${3:Variant1} => ${4:todo!()},",
+            "    ${5:EnumName}::${6:Variant2}(${7:value}) => ${8:todo!()},",
+            "    _ => ${9:todo!()},",
+            "}"
+        ],
+        "description": "Match on enum"
+    },
+    "If Let": {
+        "prefix": "dit-if-let",
+        "body": [
+            "if let ${1:Some(value)} = ${2:option} {",
+            "    ${3:println!(\"{}\", value);}",
+            "}"
+        ],
+        "description": "If-let pattern"
+    },
+    "While Let": {
+        "prefix": "dit-while-let",
+        "body": [
+            "while let ${1:Some(value)} = ${2:option} {",
+            "    ${3:println!(\"{}\", value);}",
+            "}"
+        ],
+        "description": "While-let pattern"
+    },
+    "Let Else": {
+        "prefix": "dit-let-else",
+        "body": [
+            "let ${1:pattern} = ${2:expr} else {",
+            "    return ${3:default};",
+            "};"
+        ],
+        "description": "Let-else pattern"
+    },
+    "Struct Update": {
+        "prefix": "dit-struct-update",
+        "body": [
+            "${1:StructName} {",
+            "    ${2:..default()}",
+            "}"
+        ],
+        "description": "Struct update syntax"
+    },
+    "Module": {
+        "prefix": "dit-mod",
+        "body": [
+            "mod ${1:module_name};"
+        ],
+        "description": "Module declaration"
+    },
+    "Use Statement": {
+        "prefix": "dit-use",
+        "body": [
+            "use ${1:crate}::${2:module};"
+        ],
+        "description": "Use statement"
+    },
+    "Use Nested": {
+        "prefix": "dit-use-nested",
+        "body": [
+            "use ${1:crate}::{",
+            "    ${2:module1},",
+            "    ${3:module2},",
+            "};"
+        ],
+        "description": "Nested use statement"
+    },
+    "Crate Import": {
+        "prefix": "dit-crate",
+        "body": [
+            "use crate::${1:module};"
+        ],
+        "description": "Import from crate root"
+    },
+    "Self Import": {
+        "prefix": "dit-self-use",
+        "body": [
+            "use self::${1:module};"
+        ],
+        "description": "Import from self"
+    },
+    "Vector Literal": {
+        "prefix": "dit-vec",
+        "body": [
+            "vec![${1:value}]"
+        ],
+        "description": "Vector literal"
+    },
+    "HashMap": {
+        "prefix": "dit-hashmap",
+        "body": [
+            "use std::collections::HashMap;",
+            "",
+            "let mut ${1:map} = HashMap::new();",
+            "${1:map}.insert(${2:key}, ${3:value});"
+        ],
+        "description": "HashMap"
+    },
+    "Option": {
+        "prefix": "dit-option",
+        "body": [
+            "Option<${1:T}>"
+        ],
+        "description": "Option type"
+    },
+    "Result": {
+        "prefix": "dit-result",
+        "body": [
+            "Result<${1:T}, ${2:E}>"
+        ],
+        "description": "Result type"
+    },
+    "Match Result": {
+        "prefix": "dit-match-result",
+        "body": [
+            "match ${1:result} {",
+            "    Ok(${2:value}) => ${3:println!(\"{}\", ${2:value});}",
+            "    Err(${4:error}) => ${5:eprintln!(\"{}\", ${4:error});}",
+            "}"
+        ],
+        "description": "Match on Result"
+    },
+    "Unwrap": {
+        "prefix": "dit-unwrap",
+        "body": [
+            "${1:option}.unwrap()"
+        ],
+        "description": "Unwrap option"
+    },
+    "Unwrap Or": {
+        "prefix": "dit-unwrap-or",
+        "body": [
+            "${1:option}.unwrap_or(${2:default})"
+        ],
+        "description": "Unwrap or default"
+    },
+    "Unwrap Or Else": {
+        "prefix": "dit-unwrap-or-else",
+        "body": [
+            "${1:option}.unwrap_or_else(|| ${2:todo!()})"
+        ],
+        "description": "Unwrap or else lazy"
+    },
+    "Expect": {
+        "prefix": "dit-expect",
+        "body": [
+            "${1:option}.expect(\"${2:error message}\")"
+        ],
+        "description": "Expect with message"
+    },
+    "Map Option": {
+        "prefix": "dit-map",
+        "body": [
+            "${1:option}.map(|${2:x}| ${3:x * 2})"
+        ],
+        "description": "Map on option"
+    },
+    "And Then": {
+        "prefix": "dit-and-then",
+        "body": [
+            "${1:option}.and_then(|${2:x}| ${3:Some(x * 2)})"
+        ],
+        "description": "And then flatmap"
+    },
+    "Filter Option": {
+        "prefix": "dit-filter-option",
+        "body": [
+            "${1:option}.filter(|${2:x}| ${3:x > 0})"
+        ],
+        "description": "Filter option"
+    },
+    "Is Some": {
+        "prefix": "dit-is-some",
+        "body": [
+            "${1:option}.is_some()"
+        ],
+        "description": "Is some check"
+    },
+    "Is None": {
+        "prefix": "dit-is-none",
+        "body": [
+            "${1:option}.is_none()"
+        ],
+        "description": "Is none check"
+    },
+    "Is Ok": {
+        "prefix": "dit-is-ok",
+        "body": [
+            "${1:result}.is_ok()"
+        ],
+        "description": "Is ok check"
+    },
+    "Is Err": {
+        "prefix": "dit-is-err",
+        "body": [
+            "${1:result}.is_err()"
+        ],
+        "description": "Is err check"
+    },
+    "Ok": {
+        "prefix": "dit-ok",
+        "body": [
+            "Ok(${1:value})"
+        ],
+        "description": "Ok result"
+    },
+    "Err": {
+        "prefix": "dit-err",
+        "body": [
+            "Err(${1:error})"
+        ],
+        "description": "Err result"
+    },
+    "Some": {
+        "prefix": "dit-some",
+        "body": [
+            "Some(${1:value})"
+        ],
+        "description": "Some option"
+    },
+    "None": {
+        "prefix": "dit-none",
+        "body": [
+            "None"
+        ],
+        "description": "None option"
+    },
+    "Iterator Map": {
+        "prefix": "dit-iter-map",
+        "body": [
+            "${1:iter}.map(|${2:x}| ${3:x * 2})"
+        ],
+        "description": "Iterator map"
+    },
+    "Iterator Filter": {
+        "prefix": "dit-iter-filter",
+        "body": [
+            "${1:iter}.filter(|${2:x}| ${3:x > 0})"
+        ],
+        "description": "Iterator filter"
+    },
+    "Iterator Collect": {
+        "prefix": "dit-collect",
+        "body": [
+            "${1:iter}.collect::<Vec<_>>()"
+        ],
+        "description": "Iterator collect"
+    },
+    "For Loop": {
+        "prefix": "dit-for",
+        "body": [
+            "for ${1:item} in ${2:iterable} {",
+            "    ${3:println!(\"{:?}\", ${1:item});}",
+            "}"
+        ],
+        "description": "For loop"
+    },
+    "Loop": {
+        "prefix": "dit-loop",
+        "body": [
+            "loop {",
+            "    ${1:todo!()}",
+            "}"
+        ],
+        "description": "Infinite loop"
+    },
+    "While Loop": {
+        "prefix": "dit-while",
+        "body": [
+            "while ${1:condition} {",
+            "    ${2:todo!()}",
+            "}"
+        ],
+        "description": "While loop"
+    },
+    "Println": {
+        "prefix": "dit-println",
+        "body": [
+            "println!(\"${1:{}}\", ${2:value});"
+        ],
+        "description": "Println macro"
+    },
+    "Eprintln": {
+        "prefix": "dit-eprintln",
+        "body": [
+            "eprintln!(\"${1:{}}\", ${2:value});"
+        ],
+        "description": "Eprintln macro"
+    },
+    "Format": {
+        "prefix": "dit-format",
+        "body": [
+            "format!(\"${1:{}}\", ${2:value})"
+        ],
+        "description": "Format string"
+    },
+    "dbg!": {
+        "prefix": "dit-dbg",
+        "body": [
+            "dbg!(&${1:value})"
+        ],
+        "description": "dbg! macro"
+    },
+    "panic!": {
+        "prefix": "dit-panic",
+        "body": [
+            "panic!(\"${1:message}\")"
+        ],
+        "description": "panic macro"
+    },
+    "todo!": {
+        "prefix": "dit-todo",
+        "body": [
+            "todo!()"
+        ],
+        "description": "todo! macro"
+    },
+    "unimplemented!": {
+        "prefix": "dit-unimplemented",
+        "body": [
+            "unimplemented!()"
+        ],
+        "description": "unimplemented! macro"
+    },
+    "unreachable!": {
+        "prefix": "dit-unreachable",
+        "body": [
+            "unreachable!()"
+        ],
+        "description": "unreachable! macro"
+    },
+    "vec! Macro": {
+        "prefix": "dit-vec-lit",
+        "body": [
+            "vec![${1:value1}, ${2:value2}]"
+        ],
+        "description": "vec! macro"
+    },
+    "String": {
+        "prefix": "dit-string",
+        "body": [
+            "String::from(\"${1:text}\")"
+        ],
+        "description": "String from"
+    },
+    "Box": {
+        "prefix": "dit-box",
+        "body": [
+            "Box::new(${1:value})"
+        ],
+        "description": "Boxed value"
+    },
+    "Arc": {
+        "prefix": "dit-arc",
+        "body": [
+            "Arc::new(${1:value})"
+        ],
+        "description": "Arc wrapper"
+    },
+    "Mutex": {
+        "prefix": "dit-mutex",
+        "body": [
+            "use std::sync::Mutex;",
+            "",
+            "let ${1:mutex} = Mutex::new(${2:value});",
+            "let ${3:guard} = ${1:mutex}.lock().unwrap();"
+        ],
+        "description": "Mutex"
+    },
+    "RwLock": {
+        "prefix": "dit-rwlock",
+        "body": [
+            "use std::sync::RwLock;",
+            "",
+            "let ${1:rwlock} = RwLock::new(${2:value});",
+            "// Read",
+            "let ${3:read} = ${1:rwlock}.read().unwrap();",
+            "// Write",
+            "// let ${4:write} = ${1:rwlock}.write().unwrap();"
+        ],
+        "description": "RwLock"
+    },
+    "Test Module": {
+        "prefix": "dit-test-mod",
+        "body": [
+            "#[cfg(test)]",
+            "mod tests {",
+            "    use super::*;",
+            "",
+            "    #[test]",
+            "    fn ${1:test_name}() {",
+            "        ${2:assert_eq!(1, 1);}",
+            "    }",
+            "}"
+        ],
+        "description": "Test module"
+    },
+    "Test Function": {
+        "prefix": "dit-test",
+        "body": [
+            "#[test]",
+            "fn ${1:test_name}() {",
+            "    ${2:assert_eq!(1, 1);}",
+            "}"
+        ],
+        "description": "Test function"
+    },
+    "Test Should Panic": {
+        "prefix": "dit-test-panic",
+        "body": [
+            "#[test]",
+            "#[should_panic]",
+            "fn ${1:test_name}() {",
+            "    ${2:panic!(\"expected panic\");}",
+            "}"
+        ],
+        "description": "Test should panic"
+    },
+    "Bench Function": {
+        "prefix": "dit-bench",
+        "body": [
+            "#[bench]",
+            "fn ${1:bench_name}(b: &mut test::Bencher) {",
+            "    b.iter(|| {",
+            "        ${2:todo!()}",
+            "    });",
+            "}"
+        ],
+        "description": "Benchmark function"
+    },
+    "Documentation Comment": {
+        "prefix": "dit-doc",
+        "body": [
+            "/// ${1:Description}",
+            "///",
+            "/// # Arguments",
+            "///",
+            "/// * `${2:arg}` - ${3:Description}",
+            "///",
+            "/// # Examples",
+            "///",
+            "/// ```",
+            "/// ${4:example}",
+            "/// ```"
+        ],
+        "description": "Documentation comment"
+    },
+    "Attribute": {
+        "prefix": "dit-attr",
+        "body": [
+            "#[${1:attribute}]"
+        ],
+        "description": "Attribute"
+    },
+    "Derive Macro": {
+        "prefix": "dit-derive",
+        "body": [
+            "#[derive(${1:Debug}, ${2:Clone})]"
+        ],
+        "description": "Derive macro"
+    },
+    "Lifetime": {
+        "prefix": "dit-lifetime",
+        "body": [
+            "'${1:lifetime}"
+        ],
+        "description": "Lifetime annotation"
+    },
+    "Static Lifetime": {
+        "prefix": "dit-static-lifetime",
+        "body": [
+            "&'static ${1:str}"
+        ],
+        "description": "Static lifetime"
+    },
+    "Closure": {
+        "prefix": "dit-closure",
+        "body": [
+            "|${1:args}| ${2:todo!()}"
+        ],
+        "description": "Closure"
+    },
+    "Closure Move": {
+        "prefix": "dit-closure-move",
+        "body": [
+            "move |${1:args}| ${2:todo!()}"
+        ],
+        "description": "Move closure"
+    },
+    "Thread Spawn": {
+        "prefix": "dit-thread",
+        "body": [
+            "std::thread::spawn(|| {",
+            "    ${1:todo!()}",
+            "});"
+        ],
+        "description": "Thread spawn"
+    },
+    "Tokio Spawn": {
+        "prefix": "dit-tokio-spawn",
+        "body": [
+            "tokio::spawn(async {",
+            "    ${1:todo!()}",
+            "});"
+        ],
+        "description": "Tokio spawn"
+    },
+    "Async Block": {
+        "prefix": "dit-async-block",
+        "body": [
+            "async {",
+            "    ${1:todo!()}",
+            "}"
+        ],
+        "description": "Async block"
+    },
+    "Await": {
+        "prefix": "dit-await",
+        "body": [
+            "${1:future}.await"
+        ],
+        "description": "Await future"
+    },
+    "From Trait": {
+        "prefix": "dit-from",
+        "body": [
+            "impl From<${1:A}> for ${2:B} {",
+            "    fn from(${3:item}: ${1:A}) -> Self {",
+            "        ${4:Self}(${3:item})",
+            "    }",
+            "}"
+        ],
+        "description": "From trait implementation"
+    },
+    "Into Trait": {
+        "prefix": "dit-into",
+        "body": [
+            "impl From<${1:A}> for ${2:B} {",
+            "    fn from(${3:item}: ${1:A}) -> Self {",
+            "        ${4:Self}(${3:item})",
+            "    }",
+            "}",
+            "",
+            "impl Into<${2:B}> for ${1:A} {",
+            "    fn into(self) -> ${2:B} {",
+            "        ${2:B}::from(self)",
+            "    }",
+            "}"
+        ],
+        "description": "Into trait implementation"
+    },
+    "Display Trait": {
+        "prefix": "dit-display",
+        "body": [
+            "impl std::fmt::Display for ${1:Type} {",
+            "    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {",
+            "        write!(f, \"${2:{}}\", ${3:self.value})",
+            "    }",
+            "}"
+        ],
+        "description": "Display trait implementation"
+    },
+    "Debug Trait": {
+        "prefix": "dit-debug",
+        "body": [
+            "impl std::fmt::Debug for ${1:Type} {",
+            "    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {",
+            "        f.debug_struct(\"${1:Type}\")",
+            "            .field(\"${2:field}\", &self.${2:field})",
+            "            .finish()",
+            "    }",
+            "}"
+        ],
+        "description": "Debug trait implementation"
+    },
+    "PartialEq": {
+        "prefix": "dit-partial-eq",
+        "body": [
+            "impl PartialEq for ${1:Type} {",
+            "    fn eq(&self, other: &Self) -> bool {",
+            "        self.${2:field} == other.${2:field}",
+            "    }",
+            "}"
+        ],
+        "description": "PartialEq trait"
+    },
+    "Eq": {
+        "prefix": "dit-eq",
+        "body": [
+            "impl Eq for ${1:Type} {}"
+        ],
+        "description": "Eq trait"
+    },
+    "PartialOrd": {
+        "prefix": "dit-partial-ord",
+        "body": [
+            "impl PartialOrd for ${1:Type} {",
+            "    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {",
+            "        Some(self.cmp(other))",
+            "    }",
+            "}"
+        ],
+        "description": "PartialOrd trait"
+    },
+    "Ord": {
+        "prefix": "dit-ord",
+        "body": [
+            "impl Ord for ${1:Type} {",
+            "    fn cmp(&self, other: &Self) -> std::cmp::Ordering {",
+            "        self.${2:field}.cmp(&other.${2:field})",
+            "    }",
+            "}"
+        ],
+        "description": "Ord trait"
+    },
+    "Hash": {
+        "prefix": "dit-hash",
+        "body": [
+            "impl std::hash::Hash for ${1:Type} {",
+            "    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {",
+            "        self.${2:field}.hash(state);",
+            "    }",
+            "}"
+        ],
+        "description": "Hash trait"
+    },
+    "AsRef": {
+        "prefix": "dit-as-ref",
+        "body": [
+            "impl AsRef<${1:Target}> for ${2:Type} {",
+            "    fn as_ref(&self) -> &${1:Target} {",
+            "        &self.${3:value}",
+            "    }",
+            "}"
+        ],
+        "description": "AsRef trait"
+    },
+    "Unsafe Block": {
+        "prefix": "dit-unsafe",
+        "body": [
+            "unsafe {",
+            "    ${1:todo!()}",
+            "}"
+        ],
+        "description": "Unsafe block"
+    },
+    "Unsafe Function": {
+        "prefix": "dit-unsafe-fn",
+        "body": [
+            "unsafe fn ${1:function_name}(${2:args}) {",
+            "    ${3:todo!()}",
+            "}"
+        ],
+        "description": "Unsafe function"
+    }
+}
