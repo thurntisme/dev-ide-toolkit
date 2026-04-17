@@ -1,35 +1,53 @@
-# Shared Workflows - Universal Format
+# Shared - Universal AI IDE Configuration
 
-Universal workflows/skills/rules that can be mapped to any AI IDE.
+Universal workflows, commands, and rules that can be mapped to any AI IDE.
 
 ## Structure
 
 ```
 shared/
-├── workflows/         # 8 workflow files (.md)
-│   ├── plan.md       # /plan
-│   ├── implement.md  # /implement
-│   ├── test.md      # /test
-│   ├── debug.md     # /debug
+├── commands/           # Slash command quick references
+│   ├── index.md       # All commands list
+│   ├── code-gen.md
 │   ├── code-review.md
-│   ├── git.md
+│   ├── debug.md
 │   ├── docs.md
+│   ├── git.md
+│   ├── plan.md
+│   └── test.md
+├── workflows/          # Detailed workflow implementations
+│   ├── code-gen.md    # /code-gen
+│   ├── code-review.md # /code-review
+│   ├── debug.md       # /debug
+│   ├── docs.md        # /docs
+│   ├── git.md         # /git
+│   ├── plan.md        # /plan
+│   ├── test.md        # /test
+│   ├── implement.md
+│   ├── scaffold.md
 │   └── deploy.md
-├── skills/            # 4 skill folders (each has SKILL.md)
-│   ├── code-gen/SKILL.md
-│   ├── testing/SKILL.md
-│   ├── debug/SKILL.md
-│   └── security/SKILL.md
-└── rules/            # 3 rule files (.md)
-    ├── code-style.md
+└── rules/             # Code conventions and guidelines
+    ├── code-convention.md
     ├── git-workflow.md
     └── testing.md
 ```
 
+## Available Commands
+
+| Command | Description |
+|---------|-------------|
+| `/code-gen` | Generate code from requirements |
+| `/code-review` | Review code quality |
+| `/debug` | Debug and fix errors |
+| `/docs` | Documentation management |
+| `/git` | Git operations |
+| `/plan` | Create implementation plan |
+| `/test` | Generate and run tests |
+
 ## IDE Mapping
 
 | IDE | Command Location | Mapping |
-|-----|---------------|---------|
+|-----|------------------|---------|
 | Antigravity | `.agent/` | Copy to `.agent/` |
 | Cursor | `.cursor/rules/` | Use AGENTS.md |
 | Claude Code | `.claude/` | Use CLAUDE.md |
@@ -38,23 +56,26 @@ shared/
 
 ## How It Works
 
-1. **User types `/plan`** → IDE reads AGENTS.md
-2. **AGENTS.md** points to shared workflow
-3. **IDE loads workflow** → executes steps
+1. **User types `/command`** → IDE reads commands index
+2. **Loads quick reference** → from `commands/`
+3. **Executes workflow** → from `workflows/`
 
-## Copy Scripts
+## Folder Purpose
 
-```bash
-# For Antigravity
-cp -r shared/* .agent/
-
-# For Claude Code
-mkdir .claude && cp shared/index.md .claude/
-```
+| Folder | Purpose |
+|--------|---------|
+| `commands/` | Quick reference for slash commands |
+| `workflows/` | Detailed step-by-step execution |
+| `rules/` | Conventions, guidelines, standards |
 
 ## Benefits
 
-- **Single source of truth** - one set of workflows
+- **Single source of truth** - one set of configurations
 - **IDE agnostic** - works everywhere
 - **Easy to update** - edit once, propagate everywhere
 - **Version control** - track changes in one place
+
+## Related
+
+- See: `agents/` - Tech stack profiles (coder-*)
+- See: `ide-index/` - IDE-specific configurations
