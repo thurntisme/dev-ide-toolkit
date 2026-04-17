@@ -2,10 +2,14 @@
 
 ## Branch Naming
 
-- `feature/description` - New features
-- `fix/description` - Bug fixes
-- `refactor/description` - Code refactoring
-- `docs/description` - Documentation
+| Type | Pattern | Example |
+|------|---------|---------|
+| Feature | `feature/description` | `feature/user-authentication` |
+| Bugfix | `fix/description` | `fix/login-error` |
+| Refactor | `refactor/description` | `refactor/api-handler` |
+| Documentation | `docs/description` | `docs/api-endpoints` |
+| Hotfix | `hotfix/description` | `hotfix/security-patch` |
+| Release | `release/version` | `release/v1.2.0` |
 
 ## Commits
 
@@ -23,21 +27,50 @@ type(scope): description
 - `fix`: Bug fix
 - `refactor`: Code refactor
 - `docs`: Documentation
-- `style`: Formatting
+- `style`: Formatting (no code change)
 - `test`: Tests
 - `chore`: Maintenance
+- `perf`: Performance improvement
+- `ci`: CI/CD changes
 
 ### Rules
 
 - Use imperative mood
-- Keep subject under 50 chars
-- Reference issues when applicable
+- Keep subject under 50 characters
+- Reference issues/tickets when applicable
+- Body wrap at 72 characters
 
 ## Workflow
 
-1. Create branch from main
-2. Make small, focused commits
-3. Write descriptive commit messages
-4. Push and create PR
-5. Request review
-6. Address feedback
+1. **Start new work**
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b feature/description
+   ```
+
+2. **Make commits**
+   - Make small, focused commits
+   - Write descriptive commit messages
+
+3. **Push and create PR**
+   ```bash
+   git push -u origin feature/description
+   ```
+
+4. **Code review**
+   - Request review
+   - Address feedback
+   - Make changes
+
+5. **Merge**
+   - Squash merge to main
+   - Delete branch
+
+## Best Practices
+
+- Commit early, commit often
+- Don't mix unrelated changes
+- Write meaningful commit messages
+- Review changes before committing
+- Use .gitignore for sensitive files
