@@ -68,3 +68,10 @@ AI: [Scans staged files...]
    - Fix: Add input validation in src/auth.php:45
    - Improve: Standardize naming in src/utils.php
 ```
+
+## Related
+
+- See: `../commands/code-review.md` - Quick command reference
+- See: `../rules/code-convention.md` - Code conventions
+- See: `../rules/testing.md` - Testing requirements
+```

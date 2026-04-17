@@ -41,3 +41,7 @@ description: "Slash commands: /docs init and /docs update - Documentation manage
    - Update configuration guides
 4. Track changes in CHANGELOG.md.
 5. Verify all updates are complete.
+
+## Related
+
+- See: `../commands/docs.md` - Quick command reference

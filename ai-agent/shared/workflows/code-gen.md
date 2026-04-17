@@ -90,9 +90,9 @@ dit-tmp/
 - Use named exports preferred
 - Export types alongside implementations
 
-## Related Workflows
+## Related
 
-- plan.md - Create implementation plan
-- implement.md - Generate code from plan
-- test.md - Generate and run tests
-- code-review.md - Code review
+- See: `../commands/code-gen.md` - Quick command reference
+- See: `plan.md` - Create implementation plan
+- See: `test.md` - Generate and run tests
+- See: `../rules/code-convention.md` - Code conventions

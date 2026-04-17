@@ -89,7 +89,8 @@ describe('ModuleName', () => {
 });
 ```
 
-## Related Workflows
+## Related
 
-- debug.md - Debug failing tests
-- code-review.md - Review test quality
+- See: `../commands/test.md` - Quick command reference
+- See: `../rules/testing.md` - Testing requirements
+- See: `debug.md` - Debug failing tests

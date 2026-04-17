@@ -106,8 +106,9 @@ Types: `feat`, `fix`, `refactor`, `docs`, `style`, `test`, `chore`
 | Bugfix | `fix/description` | `fix/login-error` |
 | Hotfix | `hotfix/description` | `hotfix/security-patch` |
 
-## Related Workflows
+## Related
 
-- code-review.md - Review changes before commit
-- test.md - Run tests before commit
-- deploy.md - Deploy after push
+- See: `../commands/git.md` - Quick command reference
+- See: `../rules/git-workflow.md` - Git conventions
+- See: `code-review.md` - Review changes before commit
+- See: `test.md` - Run tests before commit

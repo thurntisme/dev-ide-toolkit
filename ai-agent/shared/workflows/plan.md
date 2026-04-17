@@ -48,7 +48,7 @@ Save to: `dit-tmp/plans/PLAN-{timestamp}.md`
 - Ask for confirmation
 - Adjust if needed
 
-## Related Workflows
+## Related
 
-- implement.md - Execute the plan
-- code-gen.md - Generate code from plan
+- See: `../commands/plan.md` - Quick command reference
+- See: `code-gen.md` - Generate code from plan

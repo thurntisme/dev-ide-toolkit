@@ -74,7 +74,8 @@ Trigger: User types `/debug` or reports an error
 - Check error boundaries
 - Review recent changes (git diff)
 
-## Related Workflows
+## Related
 
-- test.md - Run tests to verify fix
-- code-review.md - Review changes
+- See: `../commands/debug.md` - Quick command reference
+- See: `test.md` - Run tests to verify fix
+- See: `code-review.md` - Review changes
