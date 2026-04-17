@@ -1,10 +1,54 @@
 ---
-description: Create implementation plan from requirements
+description: "Slash command: /plan - Create implementation plan from requirements"
 ---
 
-1. Ask user for the task/feature to implement.
-2. Analyze existing codebase structure.
-3. Identify dependencies and constraints.
-4. Break down into step-by-step tasks.
-5. Create PLAN.md with numbered steps.
-6. Present summary to user.
+# /plan Workflow
+
+Trigger: User types `/plan "implement feature..."`
+
+## Step 1: Understand requirements
+
+- Ask user for the task/feature to implement
+- Clarify any ambiguous points
+- Note constraints and dependencies
+
+## Step 2: Analyze codebase
+
+- Review existing structure
+- Check for similar implementations
+- Identify affected files
+
+## Step 3: Break into tasks
+
+- Split feature into logical steps
+- Order tasks sequentially
+- Note dependencies between tasks
+
+## Step 4: Create PLAN.md
+
+Save to: `dit-tmp/plans/PLAN-{timestamp}.md`
+
+```markdown
+# Plan: [Feature Name]
+
+## Tasks
+
+### 1. [Task Name]
+- [ ] Description
+- Files: file1.ts, file2.ts
+
+### 2. [Task Name]
+- [ ] Description
+- Files: file3.ts
+```
+
+## Step 5: Present to user
+
+- Show plan summary
+- Ask for confirmation
+- Adjust if needed
+
+## Related Workflows
+
+- implement.md - Execute the plan
+- code-gen.md - Generate code from plan

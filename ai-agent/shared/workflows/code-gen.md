@@ -1,5 +1,4 @@
 ---
-name: code-gen
 description: "Slash command: /code-gen - Generate code following dev-ide-toolkit conventions"
 ---
 
@@ -26,44 +25,45 @@ Trigger: User types `/code-gen "implement feature..."`
 
 ## Execution Steps
 
-1. **Parse command flags**
-   - Check all flags: `--strict`, `--dry-run`, `--interactive`
-   - Set corresponding mode flags
+### Step 1: Parse command flags
+- Check all flags: `--strict`, `--dry-run`, `--interactive`
+- Set corresponding mode flags
 
-2. **Ask user choose coder or no need**
-   - Ask: "Which tech stack?" (PHP, Python, React, Laravel, etc.)
-   - If no coder needed, use general coding conventions
+### Step 2: Ask user choose coder
+- Ask: "Which tech stack?" (PHP, Python, React, Laravel, etc.)
+- If no coder needed, use general coding conventions
 
-3. **Analyze feature**
-   - Understand requirements from user input
-   - Identify dependencies and constraints
-   - Check existing code patterns in project
+### Step 3: Analyze feature
+- Understand requirements from user input
+- Identify dependencies and constraints
+- Check existing code patterns in project
 
-4. **Create plan**
-   - Break down feature into step-by-step tasks
-   - Create `dit-tmp/plans/PLAN-{timestamp}.md` with numbered steps
-   - Present plan to user for confirmation
+### Step 4: Create plan
+- Break down feature into step-by-step tasks
+- Create `dit-tmp/plans/PLAN-{timestamp}.md` with numbered steps
+- Present plan to user for confirmation
 
-5. **Handle --dry-run**
-   - If --dry-run: display generated code preview, skip execution
-   - Report "Changes previewed - not applied" and exit
+### Step 5: Handle --dry-run
+- If --dry-run: display generated code preview, skip execution
+- Report "Changes previewed - not applied" and exit
 
-6. **Execute item from plan**
-   - IF --interactive: confirm before each task
-   - Implement each task sequentially
-   - Add proper imports/exports
-   - Include error handling
+### Step 6: Execute item from plan
+- IF --interactive: confirm before each task
+- Implement each task sequentially
+- Add proper imports/exports
+- Include error handling
+- Run lint/typecheck after each task
 
-7. **Review code**
-   - Run lint/typecheck
-   - Verify against plan
+### Step 7: Verify code
+- Run lint/typecheck
+- Verify against plan
 
-8. **IF --strict flag**
-   - Create test cases in `dit-tmp/testing/TEST-{timestamp}.md`
-   - Follow project test patterns
-   - Run tests to verify passing
-   - Fix any failing tests
-   - Report test coverage
+### Step 8: IF --strict flag
+- Create test cases in `dit-tmp/testing/TEST-{timestamp}.md`
+- Follow project test patterns
+- Run tests to verify passing
+- Fix any failing tests
+- Report test coverage
 
 ## Output Files
 
