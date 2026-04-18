@@ -62,7 +62,6 @@ Trigger: User types `/git` or any git-related command
 
 **For commit:**
 
-- Ask for commit message if not provided
 - Use conventional format: `type: description`
 - Stage files: `git add -A`
 - Create commit
