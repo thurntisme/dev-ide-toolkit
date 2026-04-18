@@ -32,17 +32,23 @@ echo "  1) vscode"
 echo "  2) cursor"
 echo "  3) kiro-zed"
 echo "  4) antigravity"
-read -p "Select IDE (1-4): " IDE_CHOICE
+echo "  5) opencode"
+read -p "Select IDE (1-5): " IDE_CHOICE
 
 case $IDE_CHOICE in
     1) IDE="vscode" ;;
     2) IDE="cursor" ;;
     3) IDE="kiro-zed" ;;
     4) IDE="antigravity" ;;
+    5) IDE="opencode" ;;
     *) echo "Invalid choice"; exit 1 ;;
 esac
 
-TARGET_DIR="$PROJECT_PATH/$IDE"
+if [[ "$IDE" == "opencode" ]]; then
+    TARGET_DIR="$PROJECT_PATH/.opencode"
+else
+    TARGET_DIR="$PROJECT_PATH/$IDE"
+fi
 IDE_CONFIG_DIR="$ROOT_DIR/ide-configs/$IDE"
 AI_AGENT_DIR="$ROOT_DIR/ai-agent/ide-index/$IDE"
 
@@ -59,7 +65,7 @@ if [[ "$RUN_CHOICE" == "settings" ]] || [[ "$RUN_CHOICE" == "all" ]]; then
 fi
 
 if [[ "$RUN_CHOICE" == "ai-agent" ]] || [[ "$RUN_CHOICE" == "all" ]]; then
-    if [[ ! -d "$AI_AGENT_DIR" ]]; then
+    if [[ "$IDE" != "opencode" ]] && [[ ! -d "$AI_AGENT_DIR" ]]; then
         echo "Error: AI agent config not found: $AI_AGENT_DIR"
         exit 1
     fi
@@ -80,6 +86,10 @@ if [[ "$RUN_CHOICE" == "ai-agent" ]] || [[ "$RUN_CHOICE" == "all" ]]; then
         fi
         rm -rf "$PROJECT_PATH/.agent/antigravity"
         echo "  ✓ ai-agent (.agent)"
+    elif [[ "$IDE" == "opencode" ]]; then
+        mkdir -p "$PROJECT_PATH/.opencode"
+        cp -r "$ROOT_DIR/ai-agent/shared"/* "$PROJECT_PATH/.opencode/"
+        echo "  ✓ ai-agent (.opencode)"
     else
         cp -r "$AI_AGENT_DIR"/* "$TARGET_DIR/"
         echo "  ✓ ai-agent"
@@ -101,6 +111,8 @@ echo "  $TARGET_DIR/"
 if [[ "$RUN_CHOICE" == "ai-agent" ]] || [[ "$RUN_CHOICE" == "all" ]]; then
     if [[ "$IDE" == "antigravity" ]]; then
         echo "    ├── .agent/"
+    elif [[ "$IDE" == "opencode" ]]; then
+        echo "    ├── .opencode/"
     else
         echo "    ├── (ai-agent files)"
     fi

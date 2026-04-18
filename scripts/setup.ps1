@@ -14,13 +14,15 @@ Write-Host "  1) vscode"
 Write-Host "  2) cursor"
 Write-Host "  3) kiro-zed"
 Write-Host "  4) antigravity"
-$IdeChoice = Read-Host "Select IDE (1-4)"
+Write-Host "  5) opencode"
+$IdeChoice = Read-Host "Select IDE (1-5)"
 
 switch ($IdeChoice) {
     "1" { $Ide = "vscode" }
     "2" { $Ide = "cursor" }
     "3" { $Ide = "kiro-zed" }
     "4" { $Ide = "antigravity" }
+    "5" { $Ide = "opencode" }
     default { Write-Host "Invalid choice" -ForegroundColor Red; exit 1 }
 }
 
@@ -54,14 +56,21 @@ switch ($RoleChoice) {
     default { Write-Host "Invalid choice" -ForegroundColor Red; exit 1 }
 }
 
+if ($Ide -eq "opencode") {
+    $TargetDir = Join-Path $ProjectPath ".opencode"
+    $SharedDir = Join-Path $RootDir "ai-agent\shared"
+} else {
+    $TargetDir = Join-Path $ProjectPath $Ide
+}
 $IdeDir = Join-Path $RootDir "ide-configs\$Ide"
 $TechStackDir = Join-Path $RootDir "tech-stacks\$TechStack"
 $RoleProfileDir = Join-Path $RootDir "role-profiles\$RoleProfile"
-$TargetDir = Join-Path $ProjectPath $Ide
 
-if (-not (Test-Path $IdeDir)) {
-    Write-Host "Error: IDE config not found: $IdeDir" -ForegroundColor Red
-    exit 1
+if ($Ide -ne "opencode") {
+    if (-not (Test-Path $IdeDir)) {
+        Write-Host "Error: IDE config not found: $IdeDir" -ForegroundColor Red
+        exit 1
+    }
 }
 
 if (-not (Test-Path $TechStackDir)) {
@@ -84,8 +93,13 @@ Write-Host "Copying configs to $TargetDir..."
 
 New-Item -ItemType Directory -Path $TargetDir -Force | Out-Null
 
-Copy-Item -Recurse -Path "$IdeDir\*" -Destination "$TargetDir\"
-Write-Host "  [OK] IDE config: $Ide" -ForegroundColor Green
+if ($Ide -eq "opencode") {
+    Copy-Item -Recurse -Path "$SharedDir\*" -Destination "$TargetDir\"
+    Write-Host "  [OK] ai-agent (.opencode)" -ForegroundColor Green
+} else {
+    Copy-Item -Recurse -Path "$IdeDir\*" -Destination "$TargetDir\"
+    Write-Host "  [OK] IDE config: $Ide" -ForegroundColor Green
+}
 
 New-Item -ItemType Directory -Path "$TargetDir\tech-stack" -Force | Out-Null
 Copy-Item -Recurse -Path "$TechStackDir\*" -Destination "$TargetDir\tech-stack\"
@@ -98,6 +112,10 @@ Write-Host "  [OK] Role profile: $RoleProfile" -ForegroundColor Green
 Write-Host ""
 Write-Host "Done! Project structure:" -ForegroundColor Green
 Write-Host "  $TargetDir\"
-Write-Host "    * (IDE config files)" -ForegroundColor Gray
+if ($Ide -eq "opencode") {
+    Write-Host "    * .opencode\" -ForegroundColor Gray
+} else {
+    Write-Host "    * (IDE config files)" -ForegroundColor Gray
+}
 Write-Host "    * tech-stack\" -ForegroundColor Gray
 Write-Host "    * role-profile\" -ForegroundColor Gray
