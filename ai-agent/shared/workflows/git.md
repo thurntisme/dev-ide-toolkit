@@ -9,34 +9,48 @@ Trigger: User types `/git` or any git-related command
 ## Usage
 
 ```
-/git commit "message"     # Commit with message
-/git push                 # Push to remote
-/git pull                 # Pull from remote
-/git branch               # List branches
-/git branch feature/name  # Create new branch
-/git checkout branch      # Switch branch
-/git stash                # Stash changes
-/git stash pop            # Apply stashed changes
-/git log                  # View commit history
-/git diff                 # View changes
-/git diff --staged        # View staged changes
-/git status               # Check status
+/git cm:<message>           # Check changes and create commit(s)
+/git commit "message"       # Commit with message
+/git push                   # Push to remote
+/git pull                   # Pull from remote
+/git branch                 # List branches
+/git branch feature/name    # Create new branch
+/git checkout branch        # Switch branch
+/git stash                  # Stash changes
+/git stash pop              # Apply stashed changes
+/git log                    # View commit history
+/git diff                   # View changes
+/git diff --staged          # View staged changes
+/git status                 # Check status
 ```
-
-## Flags
-
-| Flag | Description |
-|------|-------------|
-| `-m` | Commit message |
-| `-A` | Stage all files |
-| `-am` | Stage and commit |
-| `-f` | Force (with caution) |
 
 ## Execution Steps
 
-### Step 1: Identify operation
-- Parse user input to determine git operation
-- Operations: commit, push, pull, branch, checkout, stash, log, diff, status
+### Step 1: Parse command
+- If starts with `cm:` → execute commit workflow
+- Else → show this info message
+
+### Commit Workflow (`cm:`)
+
+1. **Check changes**
+   - Run `git status` to see staged and unstaged files
+   - Run `git diff --staged` for staged changes
+
+2. **Analyze logical groupings**
+   - Group files by feature/fix/refactor type
+   - Identify if multiple commits are appropriate
+   - If no changes, show "No changes to commit"
+
+3. **Create commit(s)**
+   - For each group:
+     - Stage relevant files: `git add <files>`
+     - Generate commit message using conventional format
+     - Create commit: `git commit -m "type(scope): description"`
+   - If user provided message after `cm:`, use it as base
+
+4. **Report result**
+   - Show created commit(s)
+   - Show remaining uncommitted changes if any
 
 ### Step 2: Check current state
 - Run `git status` to see current branch and changes
