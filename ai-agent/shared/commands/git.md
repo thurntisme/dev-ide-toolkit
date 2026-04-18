@@ -1,114 +1,67 @@
 ---
-description: "Git operations: commit, push, branch, stash, diff, log"
+name: git
+description: "AI Agent system for Git operations including commit, push, branch, stash, diff, and log."
+version: "1.0.0"
 ---
 
-# /git Workflow
+# /git Command Agent Logic
 
-Trigger: User types `/git` or any git-related command
+Trigger: User executes `/git [subcommand] [args]`
 
-## Usage
+## Agent Role & Instructions
 
-```
-/git cm:<message>           # Check changes and create commit(s)
-/git commit "message"       # Commit with message
-/git push                   # Push to remote
-/git pull                   # Pull from remote
-/git branch                 # List branches
-/git branch feature/name    # Create new branch
-/git checkout branch        # Switch branch
-/git stash                  # Stash changes
-/git stash pop              # Apply stashed changes
-/git log                    # View commit history
-/git diff                   # View changes
-/git diff --staged          # View staged changes
-/git status                 # Check status
-```
+You are a Git Operations Agent. Your goal is to help users manage version control workflows efficiently. When this command is triggered, you must follow the git conventions and ensure safe operations.
 
-## Execution Steps
+## Command Mapping & Execution
 
-### Step 1: Parse command
+| Command              | Action                                                                   | Workflow to Load            |
+| :------------------ | :------------------------------------------------------------------------ | :------------------------- |
+| `/git cm:<message>` | Check changes and create commit with message                             | `../workflows/git.md`      |
+| `/git commit "msg"` | Commit with provided message                                          | `../workflows/git.md`       |
+| `/git push`         | Push to remote                                                        | `../workflows/git.md`      |
+| `/git pull`         | Pull from remote                                                      | `../workflows/git.md`      |
+| `/git branch`       | List branches                                                        | `../workflows/git.md`      |
+| `/git branch <name>` | Create new branch                                                   | `../workflows/git.md`      |
+| `/git checkout <br>` | Switch branch                                                       | `../workflows/git.md`      |
+| `/git stash`        | Stash changes                                                        | `../workflows/git.md`      |
+| `/git stash pop`   | Apply stashed changes                                                | `../workflows/git.md`     |
+| `/git log`          | View commit history                                                  | `../workflows/git.md`     |
+| `/git diff`         | View changes                                                         | `../workflows/git.md`     |
+| `/git status`       | Check status                                                         | `../workflows/git.md`     |
 
-- If starts with `cm:` → execute commit workflow
-- Else → show this info message
+## Commit Workflow Execution
 
-### Commit Workflow (`cm:`)
+### Step 1: Check Changes
 
-1. **Check changes**
-   - Run `git status` to see staged and unstaged files
-   - Run `git diff --staged` for staged changes
+- Run `git status` to see staged and unstaged files
+- Run `git diff --staged` for staged changes
 
-2. **Analyze logical groupings**
-   - Group files by feature/fix/refactor type
-   - Identify if multiple commits are appropriate
-   - If no changes, show "No changes to commit"
+### Step 2: Analyze Groupings
 
-3. **Create commit(s)**
-   - For each group:
-     - Stage relevant files: `git add <files>`
-     - Generate commit message using conventional format
-     - Create commit: `git commit -m "type: description"`
-   - If user provided message after `cm:`, use it as base
+- Group files by feature/fix/refactor type
+- Identify if multiple commits are appropriate
+- If no changes, show "No changes to commit"
 
-4. **Report result**
-   - Show created commit(s)
-   - Show remaining uncommitted changes if any
+### Step 3: Create Commit(s)
 
-### Step 2: Check current state
+- For each group:
+  - Stage relevant files: `git add <files>`
+  - Generate commit message using conventional format
+  - Create commit: `git commit -m "type: description"`
 
-- Run `git status` to see current branch and changes
-- Note staged vs unstaged files
+### Step 4: Report Result
 
-### Step 3: Execute operation
+- Show created commit(s)
+- Show remaining uncommitted changes if any
 
-**For commit:**
+## Branch Operations
 
-- Use conventional format: `type: description`
-- Stage files: `git add -A`
-- Create commit
-
-**For push:**
-
-- Verify branch is not main/master (warn user)
-- Push to remote: `git push`
-
-**For pull:**
-
-- Fetch latest from remote
-- Pull changes: `git pull`
-
-**For branch:**
-
-- List branches: `git branch -a`
-- Create new: `git checkout -b branch-name`
-- Delete: `git branch -d branch-name`
-
-**For checkout:**
-
-- Switch to existing branch
-- Create and switch: `git checkout -b new-branch`
-
-**For stash:**
-
-- Stash changes: `git stash push -m "description"`
-- List stashes: `git stash list`
-- Apply stash: `git stash pop`
-
-**For log:**
-
-- Show recent commits: `git log --oneline -10`
-- Show with graph: `git log --oneline --graph -10`
-
-**For diff:**
-
-- Show unstaged: `git diff`
-- Show staged: `git diff --staged`
-- Show specific file: `git diff filename`
-
-### Step 4: Report result
-
-- Show command output
-- Confirm success/failure
-- Suggest next steps if needed
+| Operation       | Command                        |
+| :------------- | :---------------------------- |
+| List branches  | `git branch -a`              |
+| Create branch  | `git checkout -b <name>`    |
+| Delete branch  | `git branch -d <name>`       |
+| Switch branch  | `git checkout <name>`        |
 
 ## Conventions
 
@@ -130,8 +83,15 @@ Types: `feat`, `fix`, `refactor`, `docs`, `style`, `test`, `chore`
 | Bugfix  | `fix/description`     | `fix/login-error`       |
 | Hotfix  | `hotfix/description`  | `hotfix/security-patch` |
 
-## Related
+## Constraints
 
-- See: `../rules/git-workflow.md` - Git conventions
-- See: `code-review.md` - Review changes before commit
-- See: `test.md` - Run tests before commit
+- **Warn** before pushing to main/master
+- **Verify** changes exist before committing
+- **Use** conventional commit message format
+- **Do not** force push unless explicitly requested
+
+## Related Workflows
+
+- See: `../workflows/git.md` (detailed git workflow)
+- See: `code-review.md` (review changes before commit)
+- See: `test.md` (run tests before commit)

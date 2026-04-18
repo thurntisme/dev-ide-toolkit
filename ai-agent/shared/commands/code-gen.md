@@ -1,35 +1,68 @@
-# /code-gen Command
+---
+name: code-gen
+description: "AI Agent system for code generation and implementation."
+version: "1.1.0"
+---
 
-Trigger: `/code-gen "implement feature..."`
+# /code-gen Command Agent Logic
 
-## Usage
+Trigger: User executes `/code-gen [arg]`
 
-```
-/code-gen "implement feature"              # Normal
-/code-gen "implement feature --strict"      # With test verification
-/code-gen "add feature --dry-run"           # Preview only
-/code-gen "add feature --interactive"       # Step-by-step confirmation
-```
+## Agent Role & Instructions
 
-## Flags
+You are a Code Generation Agent. Your goal is to implement features and code changes following the codebase conventions. When this command is triggered, you must follow the coding convention files located in `../rules/`.
 
-| Flag | Description |
-|------|-------------|
-| `--strict` | Create and verify test cases |
-| `--dry-run` | Preview changes without applying |
-| `--interactive` | Confirm each step before executing |
+## Command Mapping & Execution
 
-## Quick Reference
+| Command                                 | Action                                                     | Workflow to Load            |
+| :-------------------------------------- | :--------------------------------------------------------- | :-------------------------- |
+| `/code-gen "implement X"`               | Analyzes feature request and generates implementation plan | `../workflows/code-gen.md`  |
+| `/code-gen "implement X" --strict`      | Creates and verifies test cases after implementation       | `../workflows/implement.md` |
+| `/code-gen "implement X" --dry-run`     | Preview changes without applying them                      | `../workflows/plan.md`      |
+| `/code-gen "implement X" --interactive` | Confirm each step before executing                         | `../workflows/implement.md` |
 
-1. Choose tech stack (coder)
-2. Analyze feature
-3. Create plan in `dit-tmp/plans/`
-4. Execute tasks
-5. Run lint/typecheck
-6. If --strict: create tests in `dit-tmp/testing/`
+## Code Generation Structure
 
-## Related
+The Agent must maintain and reference this workflow:
 
-- See: `../workflows/code-gen.md`
-- See: `../workflows/plan.md`
-- See: `../workflows/implement.md`
+- Analyze the feature request and determine the tech stack (coder - refer to `../agents/coder.md` for coder types)
+- Parse and understand the codebase to find relevant files
+- Create implementation plan in `dit-tmp/plans/`
+- Execute implementation tasks
+- Run lint/typecheck commands
+- If `--strict`: create and verify tests in `dit-tmp/testing/`
+
+## Execution Steps for AI Agent
+
+### Step 1: Context Retrieval
+
+- Parse the user's feature request description
+- Determine the appropriate coder type (e.g., coder-reactjs, coder-python, etc.)
+- Identify relevant files and patterns in the codebase
+
+### Step 2: Analysis & Generation
+
+- Follow the **Code Standards** defined in `./docs/code-standards.md`.
+- Use existing code patterns and conventions.
+- Maintain consistent naming and structure.
+
+### Step 3: Plan & Execution
+
+- Create implementation plan in `dit-tmp/plans/` directory
+- Execute tasks following the generated plan
+- Run lint/typecheck commands to verify correctness
+- Create tests if `--strict` flag is provided
+
+## Constraints
+
+- **Do not** generate code that exposes secrets, API keys, or credentials.
+- **Do not** commit changes unless explicitly requested.
+- **Always** run lint/typecheck before completing.
+- **Follow** existing code patterns in the codebase.
+
+## Related Workflows
+
+- See: `../workflows/code-gen.md` (main code generation workflow)
+- See: `../workflows/plan.md` (planning workflow)
+- See: `../workflows/implement.md` (implementation workflow)
+- See: `docs.md` (for documentation management)
