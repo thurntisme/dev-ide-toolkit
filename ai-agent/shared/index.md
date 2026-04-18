@@ -1,38 +1,39 @@
-# Shared - Universal AI IDE Configuration
+# Agent Behavior Guidelines
 
-Universal workflows, commands, and rules that can be mapped to any AI IDE.
+## Overview
 
-## Structure
+Guidelines for AI agents working in this codebase. These rules ensure consistent behavior and quality across all interactions.
 
-```
-shared/
-├── commands/           # Slash command quick references
-│   ├── index.md       # All commands list
-│   ├── code-gen.md
-│   ├── code-review.md
-│   ├── debug.md
-│   ├── docs.md
-│   ├── git.md
-│   ├── plan.md
-│   └── test.md
-├── workflows/          # Detailed workflow implementations
-│   ├── code-gen.md    # /code-gen
-│   ├── code-review.md # /code-review
-│   ├── debug.md       # /debug
-│   ├── docs.md        # /docs
-│   ├── git.md         # /git
-│   ├── plan.md        # /plan
-│   ├── test.md        # /test
-│   ├── implement.md
-│   ├── scaffold.md
-│   └── deploy.md
-└── rules/             # Code conventions and guidelines
-    ├── code-convention.md
-    ├── git-workflow.md
-    └── testing.md
-```
+## Core Principles
 
-## Available Commands
+- **Be concise** - Answer directly without unnecessary preamble or explanation
+- **Be proactive** - Take appropriate action without asking for permission
+- **Follow conventions** - Use existing patterns and respect project structure
+- **Verify changes** - Run lint/typecheck before declaring success
+
+## Behavior Rules
+
+### Communication
+- Use short responses unless detail is requested
+- Avoid introductions, conclusions, and explanations
+- Reference specific locations: `file:line`
+
+### Code Quality
+- Never add comments unless explicitly requested
+- Follow language conventions in existing code
+- Use existing libraries and utilities
+
+### Safety
+- Never commit secrets or keys
+- Avoid destructive git commands without explicit request
+- Never modify git config
+
+### Task Completion
+- Make all changes explicit before executing
+- Run lint/typecheck when available
+- Verify solutions with tests
+
+## Commands Reference
 
 | Command | Description |
 |---------|-------------|
@@ -44,38 +45,38 @@ shared/
 | `/plan` | Create implementation plan |
 | `/test` | Generate and run tests |
 
-## IDE Mapping
+## Structure
 
-| IDE | Command Location | Mapping |
-|-----|------------------|---------|
-| Antigravity | `.agent/` | Copy to `.agent/` |
-| Cursor | `.cursor/rules/` | Use AGENTS.md |
-| Claude Code | `.claude/` | Use CLAUDE.md |
-| Windsurf | `.windsurfrules` | Use AGENTS.md |
-| VS Code | `.vscode/` | Use AGENTS.md |
+```
+shared/
+├── commands/           # Slash command quick references
+├── workflows/          # Detailed workflow implementations
+└── rules/             # Code conventions and guidelines
+    ├── api-conventions.md
+    ├── clean-code.md
+    ├── code-convention.md
+    ├── database.md
+    ├── error-handling.md
+    ├── naming-convention.md
+    ├── security.md
+    ├── git-workflow.md
+    └── testing.md
+```
 
-## How It Works
+## Conventions Summary
 
-1. **User types `/command`** → IDE reads commands index
-2. **Loads quick reference** → from `commands/`
-3. **Executes workflow** → from `workflows/`
+| Area | Convention |
+|------|------------|
+| Indentation | 2 spaces |
+| Line length | 100 characters max |
+| File naming | PascalCase (components), kebab-case (utils) |
+| Functions | Under 50 lines, single responsibility |
+| Testing | Test behavior, not implementation |
 
-## Folder Purpose
+## Best Practices
 
-| Folder | Purpose |
-|--------|---------|
-| `commands/` | Quick reference for slash commands |
-| `workflows/` | Detailed step-by-step execution |
-| `rules/` | Conventions, guidelines, standards |
-
-## Benefits
-
-- **Single source of truth** - one set of configurations
-- **IDE agnostic** - works everywhere
-- **Easy to update** - edit once, propagate everywhere
-- **Version control** - track changes in one place
-
-## Related
-
-- See: `agents/` - Tech stack profiles (coder-*)
-- See: `ide-index/` - IDE-specific configurations
+- Read existing files before editing
+- Use pattern matching:glob to find similar files
+- Prefer edit over write for existing files
+- Always read first for file modifications
+- Use grep instead of grep command
