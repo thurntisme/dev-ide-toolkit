@@ -1,7 +1,7 @@
 ---
 name: git
-description: "AI Agent system for Git operations including commit, push, branch, stash, diff, and log."
-version: "1.0.0"
+description: "AI Agent system for Git operations: commit message generator, stash generator, branch name analyzer."
+version: "1.2.0"
 ---
 
 # /git Command Agent Logic
@@ -10,58 +10,61 @@ Trigger: User executes `/git [subcommand] [args]`
 
 ## Agent Role & Instructions
 
-You are a Git Operations Agent. Your goal is to help users manage version control workflows efficiently. When this command is triggered, you must follow the git conventions and ensure safe operations.
+You are a Git Operations Agent. Your goal is to help users analyze changes and generate appropriate commit messages, stash descriptions, or branch names. When this command is triggered, follow the conventions and ensure safe operations.
 
 ## Command Mapping & Execution
 
-| Command              | Action                                                                   | Workflow to Load            |
+| Command | Action | Skill to Load |
 | :------------------ | :------------------------------------------------------------------------ | :------------------------- |
-| `/git cm:<message>` | Check changes and create commit with message                             | `../workflows/git.md`      |
-| `/git commit "msg"` | Commit with provided message                                          | `../workflows/git.md`       |
-| `/git push`         | Push to remote                                                        | `../workflows/git.md`      |
-| `/git pull`         | Pull from remote                                                      | `../workflows/git.md`      |
-| `/git branch`       | List branches                                                        | `../workflows/git.md`      |
-| `/git branch <name>` | Create new branch                                                   | `../workflows/git.md`      |
-| `/git checkout <br>` | Switch branch                                                       | `../workflows/git.md`      |
-| `/git stash`        | Stash changes                                                        | `../workflows/git.md`      |
-| `/git stash pop`   | Apply stashed changes                                                | `../workflows/git.md`     |
-| `/git log`          | View commit history                                                  | `../workflows/git.md`     |
-| `/git diff`         | View changes                                                         | `../workflows/git.md`     |
-| `/git status`       | Check status                                                         | `../workflows/git.md`     |
+| `/git cm` | Analyze changes and generate commit message | `../skills/git/commit.md` |
+| `/git stash` | Analyze changes and generate stash with message | `../skills/git/stash.md` |
+| `/git branch-rcm` | Analyze current work and suggest branch name | `../skills/git/branch.md` |
 
-## Commit Workflow Execution
+## Command Details
 
-### Step 1: Check Changes
+### /git cm - Commit Message Generator
 
-- Run `git status` to see staged and unstaged files
-- Run `git diff --staged` for staged changes
+Analyzes staged and unstaged changes to generate appropriate commit message.
 
-### Step 2: Analyze Groupings
+**Workflow:**
+1. Run `git status` and `git diff` to analyze changes
+2. Group changes by type (feat, fix, refactor, docs, etc.)
+3. Generate commit message in conventional format
+4. Present message to user for confirmation
+5. Create commit only after user approval
 
-- Group files by feature/fix/refactor type
-- Identify if multiple commits are appropriate
-- If no changes, show "No changes to commit"
+### /git stash - Stash Generator
 
-### Step 3: Create Commit(s)
+Analyzes current changes and creates a descriptive stash.
 
-- For each group:
-  - Stage relevant files: `git add <files>`
-  - Generate commit message using conventional format
-  - Create commit: `git commit -m "type: description"`
+**Workflow:**
+1. Run `git status` to see all changes
+2. Analyze changes to determine context
+3. Generate descriptive stash message
+4. Create stash with message
+5. Present stash details to user
 
-### Step 4: Report Result
+### /git branch-rcm - Branch Name Recommender
 
-- Show created commit(s)
-- Show remaining uncommitted changes if any
+Analyzes current work to suggest an appropriate branch name.
 
-## Branch Operations
+**Workflow:**
+1. Run `git status` to see current changes
+2. Analyze the nature of changes (feature, bugfix, etc.)
+3. Generate branch name suggestions in conventional format
+4. Present suggestions to user
+5. Ask user to confirm before creating branch
 
-| Operation       | Command                        |
-| :------------- | :---------------------------- |
-| List branches  | `git branch -a`              |
-| Create branch  | `git checkout -b <name>`    |
-| Delete branch  | `git branch -d <name>`       |
-| Switch branch  | `git checkout <name>`        |
+## Unsupported Commands
+
+The following commands are not available in this version:
+- `/git push` - Use terminal directly
+- `/git pull` - Use terminal directly
+- `/git checkout` - Use terminal directly
+- `/git log` - Use terminal directly
+- `/git diff` - Use terminal directly
+- `/git commit` - Use `/git cm` instead
+- `/git branch` - Use `/git branch-rcm` instead
 
 ## Conventions
 
@@ -77,21 +80,23 @@ Types: `feat`, `fix`, `refactor`, `docs`, `style`, `test`, `chore`
 
 ### Branch Naming
 
-| Type    | Pattern               | Example                 |
-| ------- | --------------------- | ----------------------- |
-| Feature | `feature/description` | `feature/user-auth`     |
-| Bugfix  | `fix/description`     | `fix/login-error`       |
-| Hotfix  | `hotfix/description`  | `hotfix/security-patch` |
+| Type | Pattern | Example |
+| ------- | --------------------- | --------------------- |
+| Feature | `feature/description` | `feature/user-auth` |
+| Bugfix | `fix/description` | `fix/login-error` |
+| Hotfix | `hotfix/description` | `hotfix/security-patch` |
+| Release | `release/version` | `release/v1.0.0` |
 
 ## Constraints
 
-- **Warn** before pushing to main/master
-- **Verify** changes exist before committing
-- **Use** conventional commit message format
-- **Do not** force push unless explicitly requested
+- **Never** commit secrets or keys
+- **Always** get user confirmation before executing
+- **Verify** changes exist before generating messages
+- **Use** conventional commit format
 
-## Related Workflows
+## Related Skills
 
-- See: `../workflows/git.md` (detailed git workflow)
-- See: `code-review.md` (review changes before commit)
-- See: `test.md` (run tests before commit)
+- See: `../skills/git/commit.md` - Commit message generation
+- See: `../skills/git/stash.md` - Stash generation
+- See: `../skills/git/branch.md` - Branch name generation
+- See: `../skills/git/SKILL.md` - Master git skill

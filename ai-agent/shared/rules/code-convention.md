@@ -10,22 +10,10 @@
 - Keep components/classes under 200 lines
 - Single responsibility principle
 
-## File Naming
-
-| Type | Convention | Example |
-|------|------------|---------|
-| Components | PascalCase | `UserProfile.tsx`, `UserProfile.vue` |
-| Hooks | kebab-case | `use-user-data.ts` |
-| Services | kebab-case | `auth-service.ts` |
-| Utils | kebab-case | `format-date.ts` |
-| Types/Interfaces | PascalCase | `UserType.ts`, `UserInterface.php` |
-| Constants | UPPER_SNAKE_CASE | `MAX_RETRY_COUNT` |
-| Controllers | PascalCase | `UserController.ts`, `UserController.php` |
-| Models | PascalCase | `User.php`, `User.ts` |
-
 ## Project Structure
 
 ### JavaScript/TypeScript
+
 ```
 src/
 ├── components/     # Reusable UI components
@@ -39,6 +27,7 @@ src/
 ```
 
 ### Python
+
 ```
 src/
 ├── controllers/   # Request handlers
@@ -49,6 +38,7 @@ src/
 ```
 
 ### PHP (Laravel)
+
 ```
 app/
 ├── Http/
@@ -58,31 +48,23 @@ app/
 └── Providers/
 ```
 
-## Naming Conventions
-
-| Type | Convention | Example |
-|------|------------|---------|
-| Files | kebab-case or PascalCase | `user-service.ts`, `UserModel.php` |
-| Variables | camelCase / snake_case | `userName`, `user_name` |
-| Constants | UPPER_SNAKE_CASE | `MAX_RETRY_COUNT` |
-| Functions | camelCase / snake_case | `getUser`, `get_user` |
-| Classes | PascalCase | `UserService`, `AuthHandler` |
-| Interfaces/Types | PascalCase | `User`, `ApiResponse` |
-
 ## Code Organization
 
 ### Functions
+
 - Name with verb prefix: `getUser`, `fetchData`, `handleSubmit`
 - Use async/await over promises
 - Add return types for exported functions
 
 ### Classes/Components
+
 - Extract sub-components > 50 lines
 - Use composition over inheritance
 
 ### Imports
 
 Organize in groups:
+
 1. External packages
 2. Internal modules
 3. Types/interfaces
@@ -96,6 +78,7 @@ Organize in groups:
 ## Language-Specific Rules
 
 ### TypeScript/JavaScript
+
 - Use single quotes for strings
 - Add semicolons at end of statements
 - Use explicit return types for exported functions
@@ -104,6 +87,7 @@ Organize in groups:
 - Use strict null checks
 
 ### Python
+
 - Follow PEP 8
 - Use snake_case for functions/variables
 - Use PascalCase for classes
@@ -111,6 +95,7 @@ Organize in groups:
 - Use dataclasses for simple data objects
 
 ### PHP
+
 - Follow PSR-12
 - Use snake_case for functions/variables
 - Use PascalCase for classes
@@ -118,12 +103,14 @@ Organize in groups:
 - Use PHP 8+ features where applicable
 
 ### Rust
+
 - Use snake_case for functions/variables
 - Use PascalCase for structs/enums
 - Use explicit lifetimes where needed
 - Derive traits for common functionality
 
 ### Go
+
 - Use PascalCase for exported functions
 - Use camelCase for private functions
 - Keep code in src/ or internal/
