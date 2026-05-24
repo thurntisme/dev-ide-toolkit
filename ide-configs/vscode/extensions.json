@@ -1,46 +1,61 @@
 {
-	// See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
-	// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
-	// List of extensions which should be recommended for users of this workspace.
-	"recommendations": [
-		// --- Visuals & Error Handling ---
-		"usernamehw.errorlens", // Improve highlighting of errors, warnings and other language diagnostics
-		"aaron-bond.better-comments", // Improve code commenting by annotating with alert, informational, TODOs, and more
-		"shardulm94.trailing-spaces", // Highlight trailing spaces and delete them in a flash
-		// --- Intelligence & Navigation ---
-		"christian-kohler.path-intellisense", // Visual Studio Code plugin that autocompletes filenames
-		"alefragnani.Bookmarks", // Mark lines and jump to them easily
-		"Wayou.vscode-todo-highlight", // highlight TODO, FIXME and any keywords within comments
-		// --- Workflow & Productivity ---
-		"formulahendry.code-runner", // Run code snippet or code file for multiple languages
-		"EditorConfig.EditorConfig", // Helps maintain consistent coding styles for multiple developers working on the same project
-		"mikestead.dotenv", // Support for .env file syntax
-		"stkb.rewrap", // Re-wrap multiple lines of comments to a given length (Alt+Q)
-		// --- Git Integration ---
-		"eamodio.gitlens", // Supercharge Git within VS Code (blame, code lens, etc.)
-		"mhutchie.git-graph", // View a Git Graph of your repository, and perform Git actions from the graph
-		// --- Advanced Tools (Highly Recommended for your setup) ---
-		"tamasfe.even-better-toml", // Fully-featured TOML support (essential for modern config files)
-		"mreetz.file-resizer", // Quickly resize images directly from the sidebar (great for web assets)
-		"mosapride.zenkaku", // Highlighting "Zenkaku" space (invisible double-byte spaces that break code)
-		"wix.vscode-import-cost", // Display the size of the imported package inline
-		// --- AI & Code Assistance --- (Optional)
-		"streetsidesoftware.code-spell-checker",
-		"AMiner.codegeex",
-		"GitHub.copilot-chat",
-		"sst-dev.opencode",
-		"fedaykindev.openchamber",
-		"Codium.codium",
-		"Continue.continue",
-		"Blackboxapp.blackbox",
-		"qwenlm.qwen-code-vscode-ide-companion",
-		"tabnine.tabnine-vscode",
-		"codeium.codeium",
-		"aquilalabs.superflex",
-		"Kombai.kombai",
-		"saoudrizwan.claude-dev",
-		"phind.phind"
-	],
-	// List of extensions recommended by Antigravity that should not be recommended for users of this workspace.
-	"unwantedRecommendations": []
+  // See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+  // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+  // List of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    // --- Visuals & Error Handling ---
+    "usernamehw.errorlens", // Improve highlighting of errors, warnings and other language diagnostics
+    "aaron-bond.better-comments", // Improve code commenting by annotating with alert, informational, TODOs, and more
+    "shardulm94.trailing-spaces", // Highlight trailing spaces and delete them in a flash
+    // --- Intelligence & Navigation ---
+    "christian-kohler.path-intellisense", // Visual Studio Code plugin that autocompletes filenames
+    "alefragnani.Bookmarks", // Mark lines and jump to them easily
+    "Wayou.vscode-todo-highlight", // highlight TODO, FIXME and any keywords within comments
+    // --- Workflow & Productivity ---
+    "formulahendry.code-runner", // Run code snippet or code file for multiple languages
+    "EditorConfig.EditorConfig", // Helps maintain consistent coding styles for multiple developers working on the same project
+    "mikestead.dotenv", // Support for .env file syntax
+    "stkb.rewrap", // Re-wrap multiple lines of comments to a given length (Alt+Q)
+    // --- Git Integration ---
+    "eamodio.gitlens", // Supercharge Git within VS Code (blame, code lens, etc.)
+    "mhutchie.git-graph", // View a Git Graph of your repository, and perform Git actions from the graph
+    // --- Advanced Tools (Highly Recommended for your setup) ---
+    "tamasfe.even-better-toml", // Fully-featured TOML support (essential for modern config files)
+    "mreetz.file-resizer", // Quickly resize images directly from the sidebar (great for web assets)
+    "mosapride.zenkaku", // Highlighting "Zenkaku" space (invisible double-byte spaces that break code)
+    "wix.vscode-import-cost", // Display the size of the imported package inline
+    // --- AI & Code Assistance --- (Optional)
+    "streetsidesoftware.code-spell-checker",
+    "AMiner.codegeex",
+    "GitHub.copilot-chat",
+    "sst-dev.opencode",
+    "fedaykindev.openchamber",
+    "Codium.codium",
+    "Continue.continue",
+    "Blackboxapp.blackbox",
+    "qwenlm.qwen-code-vscode-ide-companion",
+    "tabnine.tabnine-vscode",
+    "codeium.codeium",
+    "aquilalabs.superflex",
+    "Kombai.kombai",
+    "saoudrizwan.claude-dev",
+    "phind.phind",
+    // optional but not recommended for everyone:
+    "cweijan.vscode-database-client2", // Database client for VS Code (useful if you work with databases, but can be heavy)
+    "cweijan.dbclient-jdbc", // JDBC database client for VS Code (alternative to the above, more focused on JDBC connections)
+    "dsznajder.es7-react-js-snippets", // React/Redux snippets for faster development (great for React projects, but not needed if you don't use React)
+    "dbaeumer.vscode-eslint", // Integrates ESLint JavaScript into VS Code (essential for JavaScript/TypeScript projects, but can be noisy if not configured properly)
+    "lokalise.i18n-ally", // All-in-one i18n support for VS Code (great for internationalization, but may be overkill if you don't work with i18n)
+    "DEVSENSE.intelli-php-vscode", // Advanced PHP support for VS Code (excellent for PHP development, but may be unnecessary if you don't work with PHP)
+    "DEVSENSE.phptools-vscode", // PHP debugging and development tools for VS Code (complements the above, but may be redundant if you don't need advanced PHP features)
+    "DEVSENSE.profiler-php-vscode", // PHP profiling tools for VS Code (useful for performance tuning in PHP, but not essential for all developers)
+    "brapifra.phpserver", // Simple PHP server for testing and development (handy for quick PHP testing, but may not be needed if you have other local server setups)
+    "Postman.postman-for-vscode", // Postman integration for API testing within VS Code (great for API development, but may be unnecessary if you use the standalone Postman app)
+    "esbenp.prettier-vscode", // Prettier code formatter for VS Code (excellent for consistent code formatting, but can be disruptive if not configured to your liking)
+    "burkeholland.simple-react-snippets", // Simple React snippets for faster development (alternative to the above React snippets, but may be redundant if you already have a React snippet extension)
+    "bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense for VS Code (essential for Tailwind CSS projects, but not needed if you don't use Tailwind)
+    "planbcoding.vscode-react-refactor" // React refactoring tools for VS Code (useful for React development, but may be unnecessary if you don't work with React)
+  ],
+  // List of extensions recommended by Antigravity that should not be recommended for users of this workspace.
+  "unwantedRecommendations": []
 }
