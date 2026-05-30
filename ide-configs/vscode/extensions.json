@@ -54,7 +54,11 @@
     "esbenp.prettier-vscode", // Prettier code formatter for VS Code (excellent for consistent code formatting, but can be disruptive if not configured to your liking)
     "burkeholland.simple-react-snippets", // Simple React snippets for faster development (alternative to the above React snippets, but may be redundant if you already have a React snippet extension)
     "bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense for VS Code (essential for Tailwind CSS projects, but not needed if you don't use Tailwind)
-    "planbcoding.vscode-react-refactor" // React refactoring tools for VS Code (useful for React development, but may be unnecessary if you don't work with React)
+    "planbcoding.vscode-react-refactor", // React refactoring tools for VS Code (useful for React development, but may be unnecessary if you don't work with React)
+    "snyk-security.snyk-vulnerability-scanner", // Snyk vulnerability scanner for VS Code (great for security-conscious developers, but may be overkill for those who don't need it)
+    "RooVeterinaryInc.roo-clinent", // Roo client for VS Code (useful for Roo users, but may not be relevant for everyone)
+    "kilocode.kilo-code", // AI code assistant for VS Code (can be helpful for code generation and assistance, but may not be necessary for all developers)
+    "saoudrizwan.claude-dev" // Claude AI assistant for VS Code (similar to the above, but focused on the Claude AI model)
   ],
   // List of extensions recommended by Antigravity that should not be recommended for users of this workspace.
   "unwantedRecommendations": []
